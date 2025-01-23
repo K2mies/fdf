@@ -6,63 +6,64 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/22 18:05:50 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:37:30 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-
-t_data	*init_data()
+int	parse_z_points(t_data *data, char **argv)
 {
-	t_data	*data = malloc(sizeof(t_data));
-	if (!data)
-		return (NULL);
-	data->len = 0;
-	data->rows = 0;
-	data->cols = 0;
-	data->points = NULL;
-	return (data);
-}
+	int		i;
+	int		j;
+	int		fd;
+	char	*line;
+	char	**split;
+	char	**split2;
 
-void	init_points(t_data *data)
-{
-	int	i;
-
-	i = -1;
-	data->points = malloc(sizeof(t_dp4 *) * data->rows);
-	if (!data->points)
-		ft_printf("point failure\n");
-	while (++i < data->cols)
-	{
-		data->points[i] = malloc(sizeof(t_dp4) * data->cols);
-		if (!data->points[i])
-		{
-			while (i--)
-				free(data->points[i]);
-			free(data->points);
-			ft_printf("data points free'd");
-			exit(1);
-		}
-	}
-}
-
-void	free_arr(t_dp4	**arr)
-{
-	int	 i;
 	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
+	j = 0;
+	fd = open(argv[1], O_RDONLY);
+	line = get_next_line(fd);
+	if (fd < 0 || !line)
+		return (0);
+	while (line && i < data->rows)
+	{
+		split = ft_split(line, ' '); //split the line into columns
+		j = 0;
+		while(split[j] && j < data->cols) //itterate through the split
+		{
+			if (ft_strchr(split[j], ',')) //detect if there is a hex color value
+			{
+				split2 = ft_split(split[j], ','); //split again to seperate the color value
+				data->points[i][j].z = (double)ft_atoi(split2[0]); //allocate as double
+				data->points[i][j].rgba = ft_atoi_base(split2[1], 16);
+				free(split2);
+			}
+			data->points[i][j].z = (double)ft_atoi(split[j]); //allocate as double.
+			j++;
+		}
+		free(line);
+		free(split);
+		line = get_next_line(fd);
+		i++;
+	}
+	return (1);
+}
+
+void	parse_points(char **argv, t_data *data)
+{
+	//parse_x_points(data, argv);
+	//parse_y_points(data, argv);
+	parse_z_points(data, argv);
+	//parse_rgba_points(data, argv);
+	//for parsing the rgba values use ft_atoi_base(char *str, int base)
+	//in order to convert the number to an unsigned int.
 }
 
 int	main(int argc, char **argv)
 {
-	//int i;
-
 	if (argc != 2)
 		return (0);
-	(void)argc;
-	(void)argv;
 
 	t_data *data;
 	data = init_data();
@@ -71,30 +72,16 @@ int	main(int argc, char **argv)
 	get_col_count(argv, data);
 	init_points(data);
 	//ft_printf("len = %d\nrows = %d\ncolumns = %d\n", data->len, data->rows, data->cols);
-	
 	//print_map(argv);
+	//memset_points(data); // you do not need memset anymore as calloc initalizes the points.
+	parse_points(argv, data);
+	print_arr(data, 'x');
+	printf("\n");
+	print_arr(data, 'z');
+	printf("\n");
+	print_arr(data, 'c');
 
-	/* how to assign 2d array of points----------------------------------------------
-	t_dp4	**points;
-	points = malloc(data->rows * sizeof(t_dp4 *));
-	if (points == NULL)
-		panic;
-	i = -1;
-	while (++i < data->cols)
-	{
-		points[i] = malloc(data->cols * sizeof(t_dp4));
-		if (point[i] == NULL)
-		{
-			while (i--)
-				free(points[i]);
-			free(points);
-			exit();
-		}
-	}
-	//-------------------------------------------------------------------------------
-	*/
-
-	free_arr(data->points);
+	free_arr(data);
 	free(data);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/22 18:06:01 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:42:04 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 # include <fcntl.h>
+# include <stdint.h>
+# include <stdio.h>
 
 # define WIDTH 2048
 # define HEIGHT 2048
@@ -43,11 +45,20 @@ typedef struct s_data
 		t_dp4	**points;
 }		t_data;
 
-//read map functions
+//read map functions------------------------------------------------------------------
 int	print_map(char **argv); //prints the map to the terminal
 int	get_row_count(char **argv, t_data *data); //gets the count of rows in the map.
 int	get_col_count(char **argv, t_data *data); //gets the count of collumns in the map.
 int	get_map_len(char **argv, t_data *data); //gets the len of the whole map
 int	word_count(const char *str); //word counter
+int	print_arr(t_data *data, char flag);
+
+//init_data---------------------------------------------------------------------------
+t_data	*init_data();
+void	init_points(t_data *data);
+void	memset_points(t_data *data);
+
+//utils-------------------------------------------------------------------------------
+void	free_arr(t_data *data);
 
 #endif

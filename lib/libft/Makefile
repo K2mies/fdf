@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/28 16:11:34 by rhvidste          #+#    #+#              #
-#    Updated: 2025/01/20 11:03:26 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/01/23 16:19:02 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ SRC =	ft_isalpha.c \
 		ft_print_hex.c \
 		ft_printpercent.c\
 		ft_printf.c \
-		get_next_line.c
+		get_next_line.c \
+		ft_atoi_base.c
 
 OBJ = $(SRC:.c=.o)
 

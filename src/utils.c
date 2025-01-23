@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:46:10 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/23 15:14:52 by rhvidste         ###   ########.fr       */
+/*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
+/*   Updated: 2025/01/23 11:01:32 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	free_arr(t_data *data)
 {
-	unsigned char	*ptr;
-	size_t			i;
-	size_t			result;
-
-	i = 0;
-	result = nmemb * size;
-	if (nmemb && size != result / nmemb)
-		return (NULL);
-	ptr = (void *)malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	while (i < nmemb * size)
-		ptr[i++] = 0;
-	return (ptr);
+	int		i;
+	i = -1;
+	while(++i < data->rows)
+		free(data->points[i]);
+	free(data->points);
 }
