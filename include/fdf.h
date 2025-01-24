@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/24 14:41:30 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:25:39 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		print_arr(t_data *data, char flag); //function to print the points array.
 //parse map--------------------------------------------------------------------------
 int		parse_points(char **argv, t_data *data);
 int		reset_parse(char **argv, t_data *data, char **split, char **split2);
+int		parse_xy_points(t_data *data);
 int		parse_z_points(t_data *data, char **split, char **split2);
 int		parse_rgba_points(t_data *data, char **split, char **split2);
 //init_data---------------------------------------------------------------------------
