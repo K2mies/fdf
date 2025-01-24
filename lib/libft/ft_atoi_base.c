@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:18:44 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/23 17:10:33 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:05:15 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ unsigned int	ft_parse(int i, char *str, int base)
 	unsigned int	res;
 	int				c;
 
+	res = 0;
 	while (str[i] && ft_isvalid(str[i], base))
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -49,6 +50,15 @@ unsigned int	ft_parse(int i, char *str, int base)
 	return (res);
 }
 
+int	check_prefex(char *str, int i)
+{
+	if (str[0] == '0' && str[1] == 'x')
+		i = 2;
+	else
+		i = 0;
+	return (i);
+}
+
 unsigned int	ft_atoi_base(char *str, int base)
 {
 	int				sign;
@@ -58,6 +68,7 @@ unsigned int	ft_atoi_base(char *str, int base)
 	sign = 1;
 	res = 0;
 	i = 0;
+	i = check_prefex(str, i);
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-')

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:11:41 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/23 15:49:52 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:47:28 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	init_points(t_data *data)
 	}
 }
 
+// Can remove this function as it is not relaly usefull anymore.
 void	memset_points(t_data *data)
 {
 	int		i;

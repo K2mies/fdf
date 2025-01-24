@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/23 17:37:30 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:47:31 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -36,7 +36,7 @@ int	parse_z_points(t_data *data, char **argv)
 			{
 				split2 = ft_split(split[j], ','); //split again to seperate the color value
 				data->points[i][j].z = (double)ft_atoi(split2[0]); //allocate as double
-				data->points[i][j].rgba = ft_atoi_base(split2[1], 16);
+				data->points[i][j].rgba = ft_atoi_base(split2[1], 16); //allocating col data here but might be better to do it seperatly.
 				free(split2);
 			}
 			data->points[i][j].z = (double)ft_atoi(split[j]); //allocate as double.
