@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:30 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/24 11:10:20 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:29:40 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -100,7 +100,7 @@ int	get_col_count(char **argv, t_data *data)
 	}
 	//-------------------------------------------------------------------
 	free(line);
-	free(split);
+	free_arr(split);
 	close(fd);
 	data->cols = cc;
 	return (cc);

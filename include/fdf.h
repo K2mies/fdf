@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/24 11:05:54 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:34:19 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,16 @@ int	get_map_len(char **argv, t_data *data); //gets the len of the whole map
 int	word_count(const char *str); //word counter
 int	print_arr(t_data *data, char flag);
 
+//parse map--------------------------------------------------------------------------
+void	parse_points(char **argv, t_data *data);
+int		parse_z_points(t_data *data, char **argv); //parses z data and also rgba.
 //init_data---------------------------------------------------------------------------
 t_data	*init_data();
 void	init_points(t_data *data);
 void	memset_points(t_data *data);
 
 //utils-------------------------------------------------------------------------------
-void	free_arr(t_data *data);
+void	free_point_arr(t_data *data);
+void	free_arr(char **arr);
 
 #endif

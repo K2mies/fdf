@@ -6,13 +6,24 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/23 11:01:32 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:28:01 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_arr(t_data *data)
+void	free_arr(char **arr)
+{
+	int	i;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i++]);
+	}
+	free(arr);
+}
+
+void	free_point_arr(t_data *data)
 {
 	int		i;
 	i = -1;

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/24 11:40:25 by rhvidste         ###   ########.fr       */
+/*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
+/*   Updated: 2025/01/24 11:44:11 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "fdf.h"
 
+void	parse_points(char **argv, t_data *data)
+{
+	
+	//parse_x_points(data, argv);
+	//parse_y_points(data, argv);
+	parse_z_points(data, argv);
+	//parse_rgba_points(data, argv);
+	//for parsing the rgba values use ft_atoi_base(char *str, int base)
+	//in order to convert the number to an unsigned int.
+}
 
-/*
 int	parse_z_points(t_data *data, char **argv)
 {
 	int		i;
@@ -51,41 +61,3 @@ int	parse_z_points(t_data *data, char **argv)
 	}
 	return (1);
 }
-
-void	parse_points(char **argv, t_data *data)
-{
-	//parse_x_points(data, argv);
-	//parse_y_points(data, argv);
-	parse_z_points(data, argv);
-	//parse_rgba_points(data, argv);
-	//for parsing the rgba values use ft_atoi_base(char *str, int base)
-	//in order to convert the number to an unsigned int.
-}
-*/
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		return (0);
-
-	t_data *data;
-	data = init_data();
-	get_map_len(argv, data);
-	get_row_count(argv, data);
-	get_col_count(argv, data);
-	init_points(data);
-	
-	//ft_printf("len = %d\nrows = %d\ncolumns = %d\n", data->len, data->rows, data->cols);
-	//print_map(argv);
-	//memset_points(data); // you do not need memset anymore as calloc initalizes the points.
-	
-	parse_points(argv, data);
-	//print_arr(data, 'x');
-	//printf("\n");
-	//print_arr(data, 'z');
-	//printf("\n");
-	//print_arr(data, 'c');
-
-	free_point_arr(data);
-	free(data);
-}
-
