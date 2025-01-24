@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:11:41 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/23 17:47:28 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:41:28 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_data	*init_data()
 	data->len = 0;
 	data->rows = 0;
 	data->cols = 0;
+	data->fd = 0;
+	data->line = 0;
 	data->points = NULL;
 	return (data);
 }
