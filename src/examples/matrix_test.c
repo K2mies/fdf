@@ -6,7 +6,7 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:42:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/25 22:18:36 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:20:30 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -30,7 +30,7 @@ typedef struct s_vec4
 
 // Function to create an identity matrix
 
-t_matrix	create_identity_matrix()
+t_matrix	create_identity_matrix(void)
 {
 	t_matrix	matrix;
 matrix = (t_matrix)
@@ -100,6 +100,39 @@ t_matrix	create_rotation_x_matrix(double angle)
 	return(m);
 }
 
+// Function to create a rotation matrix around the y axis
+t_matrix	create_rotation_y_matrix(double angle)
+{
+	double	c;
+	double	s;
+
+	c = cos(angle);
+	s = sin(angle);
+	t_matrix	m;
+	m = create_identity_matrix();
+	m.m[0][0] = c;
+	m.m[0][2] = s;
+	m.m[2][0] = -s;
+	m.m[2][2] = c;
+	return (m);
+}
+
+t_matrix	create_rotation_z_matrix(double angle)
+{
+	double	c;
+	double	s;
+
+	c = cos(angle);
+	s = sin(angle);
+	t_matrix	m;
+	m = create_identity_matrix();
+	m.m[0][0] = c;
+	m.m[0][1] = -s;
+	m.m[1][0] = s;
+	m.m[1][1] = c;
+	return (m);
+}
+
 // Function to normalize a homogeneous coordinate vector
 
 t_vec4	normalize_homogeneous_vector(t_vec4 v)
@@ -128,16 +161,22 @@ int	main(int argc, char **argv)
 	w = atof(argv[4]);
 
 	t_vec4	v = {x, y, z, w}; // Homogenoeous coordinate(x, y, z, w)
-	t_matrix	translation;
-	translation = create_translation_matrix(2, 3, 4);
+	
+	//t_matrix	translation;
+	t_matrix	rot_x;
+	//translation = create_translation_matrix(2, 3, 4);
+	rot_x = create_rotation_x_matrix(15);
+	
 	t_vec4		res;
-	res = matrix_multiply_vector(translation, v);
+
+	//res = matrix_multiply_vector(translation, v);
+	res = matrix_multiply_vector(rot_x, v);
 	res = normalize_homogeneous_vector(res);
 
 	printf("Original vector: (%.1f, %.1f, %.1f, %.1f)\n", v.x, v.y, v.z, v.w);
 	printf("Translated vector(%.1f, %.1f, %.1f, %.1f)\n", res.x, res.y, res.z, res.w);
 	return (0);
-}	
+}
 
 /*void	tranlate(t_dp4 *point, double offset)
 {
