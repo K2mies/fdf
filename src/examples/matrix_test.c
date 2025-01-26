@@ -6,7 +6,7 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:42:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/25 23:20:30 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:50:43 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -29,11 +29,10 @@ typedef struct s_vec4
 }	t_vec4;
 
 // Function to create an identity matrix
-
 t_matrix	create_identity_matrix(void)
 {
 	t_matrix	matrix;
-matrix = (t_matrix)
+	matrix = (t_matrix)
 {{
         {1, 0, 0, 0},
         {0, 1, 0, 0},
@@ -117,6 +116,7 @@ t_matrix	create_rotation_y_matrix(double angle)
 	return (m);
 }
 
+// Function to create a rotation matrix around the z axis
 t_matrix	create_rotation_z_matrix(double angle)
 {
 	double	c;
@@ -134,7 +134,6 @@ t_matrix	create_rotation_z_matrix(double angle)
 }
 
 // Function to normalize a homogeneous coordinate vector
-
 t_vec4	normalize_homogeneous_vector(t_vec4 v)
 {
 	if (v.w != 0 && v.w != 1)
@@ -177,14 +176,3 @@ int	main(int argc, char **argv)
 	printf("Translated vector(%.1f, %.1f, %.1f, %.1f)\n", res.x, res.y, res.z, res.w);
 	return (0);
 }
-
-/*void	tranlate(t_dp4 *point, double offset)
-{
-	x_trans.elem = (double * [])
-	{
-		(double[]){1, 0, 0, offset},
-		(double[]){0, 1, 0, offset},
-		(double[]){0, 0, 1 ,offset}
-		(double[]){0, 0, 0 ,1}
-	};
-}*/
