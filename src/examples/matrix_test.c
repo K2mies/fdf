@@ -6,12 +6,14 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:42:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/26 21:49:58 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:13:31 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+//Homogeneous Coordinates system.
 
 //Define a 4x4 matrix structure.
 typedef struct s_matrix
