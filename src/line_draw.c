@@ -6,9 +6,12 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:55:14 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/26 17:01:44 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:18:52 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fdf.h"
+
 
 void	draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, uint32_t color)
 {

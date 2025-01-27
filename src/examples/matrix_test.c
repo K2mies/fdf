@@ -6,7 +6,7 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:42:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/26 22:13:31 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:25:26 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -241,7 +241,7 @@ int	main(int argc, char **argv)
 	res2 = matrix_multiply_vector(orthographic, res);
 	t_vec2		res3; // 2D projection of Vector-------------------------------------
 	project_3d_to_2d(res2.x, res2.y, res2.z, orthographic, &res3);
-	//res = matrix_multiply_vector(perspective, v);
+	//res = matrix_multiply_vector(perspective, res);
 
 	//res = normalize_homogeneous_vector(res);
 	

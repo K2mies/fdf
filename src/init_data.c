@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:11:41 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/24 14:41:28 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:29:39 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	init_points(t_data *data)
 	int	i;
 
 	i = -1;
-	data->points = malloc(sizeof(t_dp4 *) * data->rows);
+	data->points = malloc(sizeof(t_vec4 *) * data->rows);
 	if (!data->points)
 		ft_printf("point failure\n");
 	while (++i < data->rows)
 	{
-		//data->points[i] = malloc(sizeof(t_dp4) * data->cols);
+		//data->points[i] = malloc(sizeof(t_vec4) * data->cols);
 		//uses calloc to initalize the points removing the need for memset.
 		//remember to remove memset from files and header.
-		data->points[i] = calloc(data->cols, sizeof(t_dp4));
+		data->points[i] = calloc(data->cols, sizeof(t_vec4));
 		//printf("data point = %d\n", data->points[i]);
 		if (!data->points[i])
 		{
@@ -53,6 +53,7 @@ void	init_points(t_data *data)
 }
 
 // Can remove this function as it is not relaly usefull anymore.
+// or might still be usefull for implamenting colour initalization at some point.
 void	memset_points(t_data *data)
 {
 	int		i;

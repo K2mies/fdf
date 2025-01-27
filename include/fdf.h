@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/24 15:25:39 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:30:57 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@
 # define WHITE	0x000000FF
 # define BLACK	0x000000FF
 
-typedef struct	s_dp4
+typedef struct		s_vec4
 {
 		double			x;
 		double			y;
 		double			z;
+		double			w;
 		unsigned int	rgba;
-}		t_dp4;
+}		t_vec4;
 
 typedef struct s_data
 {
@@ -44,7 +45,7 @@ typedef struct s_data
 		int		cols;
 		int		fd;
 		char	*line;
-		t_dp4	**points;
+		t_vec4	**points;
 }		t_data;
 
 //read map functions------------------------------------------------------------------
