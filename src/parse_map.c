@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/27 10:30:32 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:26:51 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	reset_parse(char **argv, t_data *data, char **split, char **split2)
 	return (1);
 }
 
+// Function to parse points to a points array.
 int	parse_points(char **argv, t_data *data)
 {	
 	char	**split;
@@ -46,6 +47,7 @@ int	parse_points(char **argv, t_data *data)
 	return (1);
 }
 
+// Function to parse x and y coordinates to array
 int	parse_xy_points(t_data *data)
 {
 	int	i;
@@ -67,6 +69,7 @@ int	parse_xy_points(t_data *data)
 	return (1);
 }
 
+// Function to parse z coordinates to array
 int	parse_z_points(t_data *data, char **split, char **split2)
 {
 	int		i;
@@ -95,6 +98,7 @@ int	parse_z_points(t_data *data, char **split, char **split2)
 	return (1);
 }
 
+// Function to parse rgba data to the vec4 array.
 int	parse_rgba_points(t_data *data, char **split, char **split2)
 {
 	int		i;

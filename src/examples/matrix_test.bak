@@ -6,7 +6,7 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:42:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/27 10:25:26 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:34:10 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -14,6 +14,17 @@
 #include <math.h>
 
 //Homogeneous Coordinates system.
+
+//Define a orthographic data struct.
+typedef struct s_ortho_data
+{
+	double	left;
+	double	right;
+	double	bottom;
+	double	top;
+	double	near;
+	double	far;
+}	t_ortho_data;
 
 //Define a 4x4 matrix structure.
 typedef struct s_matrix
@@ -41,13 +52,14 @@ typedef struct s_vec2
 t_matrix	create_identity_matrix(void)
 {
 	t_matrix	matrix;
+
 	matrix = (t_matrix)
-{{
-        {1, 0, 0, 0},
-        {0, 1, 0, 0},
-        {0, 0, 1, 0},
-        {0, 0, 0, 1}
-}};
+	{{
+	{1, 0, 0, 0},
+	{0, 1, 0, 0},
+	{0, 0, 1, 0},
+	{0, 0, 0, 1}
+	}};
 	return (matrix);
 }
 
@@ -55,12 +67,11 @@ t_matrix	create_identity_matrix(void)
 t_vec4	matrix_multiply_vector(t_matrix m, t_vec4 v)
 {
 	t_vec4	res;
-	//double	w;
+
 	res.x = m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3];
 	res.y = m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3];
 	res.z = m.m[2][0] * v.x + m.m[2][1] * v.y + m.m[2][2] * v.z + m.m[2][3];
 	res.w = m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3];
-
 	if (res.w != 1 && res.w != 0)
 	{
 		res.x /= res.w;
@@ -71,17 +82,25 @@ t_vec4	matrix_multiply_vector(t_matrix m, t_vec4 v)
 }
 
 // Function to projcet 3d to 2d space
-void project_3d_to_2d(double x, double y, double z, t_matrix proj_matrix, t_vec2 *res) 
+//void	project_3d_to_2d(double x, double y, double z, t_matrix m, t_vec2 *res)
+void	project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res)
 {
-    double w;
-    	 w =  	    proj_matrix.m[3][0] * x + proj_matrix.m[3][1] * y + proj_matrix.m[3][2] * z + proj_matrix.m[3][3];
-    res->x = 100 * (proj_matrix.m[0][0] * x + proj_matrix.m[0][1] * y + proj_matrix.m[0][2] * z + proj_matrix.m[0][3]) / w;
-    res->y = 100 * (proj_matrix.m[1][0] * x + proj_matrix.m[1][1] * y + proj_matrix.m[1][2] * z + proj_matrix.m[1][3]) / w;
+	double	w;
+
+	w = m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3];
+	res->x = (m.m[0][0] * v.x + m.m[0][1] * v.y
+			+ m.m[0][2] * v.z + m.m[0][3]) / w;
+	res->y = (m.m[1][0] * v.x + m.m[1][1] * v.y
+			+ m.m[1][2] * v.z + m.m[1][3]) / w;
+	res->x *= 100;
+	res->y *= 100;
 }
+
 // Function to create a translation matrix
 t_matrix	create_translation_matrix(double tx, double ty, double tz)
 {
-	t_matrix m;
+	t_matrix	m;
+
 	m = create_identity_matrix();
 	m.m[0][3] = tx;
 	m.m[1][3] = ty;
@@ -92,7 +111,9 @@ t_matrix	create_translation_matrix(double tx, double ty, double tz)
 // Function to create a scaling matrix
 t_matrix	create_scaling_matrix(double sx, double sy, double sz)
 {
-	t_matrix	m = create_identity_matrix();
+	t_matrix	m;
+
+	m = create_identity_matrix();
 	m.m[0][0] = sx;
 	m.m[1][1] = sy;
 	m.m[2][2] = sz;
@@ -102,29 +123,29 @@ t_matrix	create_scaling_matrix(double sx, double sy, double sz)
 // Function to create a rotation matrix around the X axis
 t_matrix	create_rotation_x_matrix(double angle)
 {
-	double	c;
-	double	s;
+	double		c;
+	double		s;
+	t_matrix	m;
 
 	c = cos(angle);
 	s = sin(angle);
-	t_matrix	m;
-       	m = create_identity_matrix();
+	m = create_identity_matrix();
 	m.m[1][1] = c;
 	m.m[1][2] = -s;
 	m.m[2][1] = s;
 	m.m[2][2] = c;
-	return(m);
+	return (m);
 }
 
 // Function to create a rotation matrix around the y axis
 t_matrix	create_rotation_y_matrix(double angle)
 {
-	double	c;
-	double	s;
+	double		c;
+	double		s;
+	t_matrix	m;
 
 	c = cos(angle);
 	s = sin(angle);
-	t_matrix	m;
 	m = create_identity_matrix();
 	m.m[0][0] = c;
 	m.m[0][2] = s;
@@ -136,12 +157,12 @@ t_matrix	create_rotation_y_matrix(double angle)
 // Function to create a rotation matrix around the z axis
 t_matrix	create_rotation_z_matrix(double angle)
 {
-	double	c;
-	double	s;
+	double		c;
+	double		s;
+	t_matrix	m;
 
 	c = cos(angle);
 	s = sin(angle);
-	t_matrix	m;
 	m = create_identity_matrix();
 	m.m[0][0] = c;
 	m.m[0][1] = -s;
@@ -151,35 +172,35 @@ t_matrix	create_rotation_z_matrix(double angle)
 }
 
 // Function to create a orthographic perspective matrix
-t_matrix	create_orthographic_matrix(double left, double right, double bottom, double top, double near, double far)
+t_matrix	create_orthographic_matrix(t_ortho_data *o)
 {
-	t_matrix	m = {{{0}}};
-        //m = create_identity_matrix();
+	t_matrix	m;
 
-	m.m[0][0] =  2.0f / (right - left);
-	m.m[1][1] =  2.0f / (top - bottom);
-	m.m[2][2] = -2.0f / (far - near);
-	m.m[3][0] = -(right + left) / (right - left);
-	m.m[3][1] = -(top + bottom) / (top - bottom);
-	m.m[3][2] = -(far + near) / (far - near);
-	m.m[3][3] =  1.0f;
-
-	return(m);
+	m = {{{0}}};
+	m.m[0][0] = 2.0f / (o->right - o->left);
+	m.m[1][1] = 2.0f / (o->top - o->bottom);
+	m.m[2][2] = -2.0f / (o->far - o->near);
+	m.m[3][0] = -(o->right + o->left) / (o->right - o->left);
+	m.m[3][1] = -(o->top + o->bottom) / (o->top - o->bottom);
+	m.m[3][2] = -(o->far + o->near) / (o->far - o->near);
+	m.m[3][3] = 1.0f;
+	return (m);
 }
 
 // Function to create a perspective matrix for projection.
-t_matrix	create_perspective_matrix(double fov, double aspect_ratio, double near, double far)
-{
-	t_matrix	m = {{{0}}}; // Initialize all ememnts to 0
-	double tan_half_fov;
+//									  fov        |aspect r | near     |far     |
+t_matrix	create_perspective_matrix(double fov, double ar, double n, double f)
+{	
+	double		tan_half_fov;
+	t_matrix	m;
+
+	m = {{{0}}};
 	tan_half_fov = tan(fov * 0.5 * M_PI / 180.0);
-
-	m.m[0][0] =  1.0f / (aspect_ratio * tan_half_fov);
-	m.m[1][1] =  1.0f / tan_half_fov;
-	m.m[2][2] =  (far + near) / (far - near);
-	m.m[2][3] = -2.0f * far * near / (far - near);
+	m.m[0][0] = 1.0f / (ar * tan_half_fov);
+	m.m[1][1] = 1.0f / tan_half_fov;
+	m.m[2][2] = (f + n) / (f - n);
+	m.m[2][3] = -2.0f * f * n / (f - n);
 	m.m[3][2] = -1.0f;
-
 	return (m);
 }
 
@@ -198,11 +219,11 @@ t_vec4	normalize_homogeneous_vector(t_vec4 v)
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
 	double	x;
 	double	y;
 	double	z;
 	double	w;
+	(void)argc;
 
 	x = atof(argv[1]);
 	y = atof(argv[2]);
@@ -226,7 +247,19 @@ int	main(int argc, char **argv)
 	rot_y = create_rotation_y_matrix(15);
 	rot_z = create_rotation_z_matrix(15);	
 	translation = create_translation_matrix(10, 10, 10);
-	orthographic = create_orthographic_matrix(-10.0f, 10.0f, -7.5f, 7.5f, 0.1f, 100.0f);
+	
+	// Set data for orthographic projection
+	t_ortho_data	*o;
+	o = malloc(sizeof(t_ortho_data));
+	o->left = -10.0f;
+	o->right = 10.0f;
+	o->bottom = -7.5f;
+	o->top = 7.5f;
+	o->near = 0.1f;
+	o->far = 100.0f;
+	orthographic = create_orthographic_matrix(o);
+	//free_ortho_data(&o);
+	free(o);
 	//perspective = create_perspective_matrix(60.0, (16.0 / 9.0), 0.1, 100.0);
 	//				       |fov  |aspect ratio| near |far
 
@@ -240,7 +273,7 @@ int	main(int argc, char **argv)
 	t_vec4		res2; // Vector post projection.-------------------------------------
 	res2 = matrix_multiply_vector(orthographic, res);
 	t_vec2		res3; // 2D projection of Vector-------------------------------------
-	project_3d_to_2d(res2.x, res2.y, res2.z, orthographic, &res3);
+	project_3d_to_2d(res2, orthographic, &res3);
 	//res = matrix_multiply_vector(perspective, res);
 
 	//res = normalize_homogeneous_vector(res);
