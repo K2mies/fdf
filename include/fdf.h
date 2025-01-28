@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/28 12:30:54 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:19:28 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
 // Line draw---------------------------------------------------------------------------
 void		draw_line(t_data *data, int x0, int y0, int x1, int y2, uint32_t color);
 // Utils-------------------------------------------------------------------------------
-double		degrees_to_radians(double degrees);
+double		deg_to_rad(double degrees);
 void		free_point_arr(t_data *data);
 void		free_arr(char **arr);
 
