@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/27 17:49:01 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:03:52 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # include <stdint.h>
 # include <stdio.h>
 
-# define WIDTH 2048
-# define HEIGHT 2048
+//# define WIDTH 2048
+//# define HEIGHT 2048
+# define WIDTH 3840
+# define HEIGHT 2160
 
 # define RED	0xFF0000FF
 # define GREEN	0x00FF00FF
@@ -67,6 +69,8 @@ typedef struct		s_ortho_data
 // Define a global data structure
 typedef struct 		s_data
 {
+		int			width;
+		int			height;
 		int			len;
 		int			rows;
 		int			cols;

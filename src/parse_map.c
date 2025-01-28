@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/27 13:26:51 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:03:27 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	parse_points(char **argv, t_data *data)
 // Function to parse x and y coordinates to array
 int	parse_xy_points(t_data *data)
 {
+	double	center_x = data->cols / 2.0;
+	double	center_y = data->rows / 2.0;
 	int	i;
 	int	j;
 
@@ -60,8 +62,8 @@ int	parse_xy_points(t_data *data)
 		j = 0;
 		while (j < data->cols)
 		{
-			data->points[i][j].y = (double)i;
-			data->points[i][j].x = (double)j;
+			data->points[i][j].y = ((double)i - center_x);
+			data->points[i][j].x = ((double)j - center_y);
 			j++;
 		}
 		i++;
@@ -86,10 +88,10 @@ int	parse_z_points(t_data *data, char **split, char **split2)
 			if (ft_strchr(split[j], ','))
 			{
 				split2 = ft_split(split[j], ',');
-				data->points[i][j].z = (double)ft_atoi(split2[0]);
+				data->points[i][j].z = (double)ft_atoi(split2[0]); //* 0.1;
 				free_arr(split2);
 			}
-			data->points[i][j].z = (double)ft_atoi(split[j]);
+			data->points[i][j].z = (double)ft_atoi(split[j]); // * 0.1;
 		}
 		free(data->line);
 		free_arr(split);

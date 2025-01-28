@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:11:41 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/27 17:32:38 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:51:27 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_data	*init_data(void)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
+	data->width = 0;
+	data->height = 0;
 	data->len = 0;
 	data->rows = 0;
 	data->cols = 0;
