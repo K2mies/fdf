@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/28 12:05:18 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:31:52 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -104,7 +104,8 @@ int32_t	main(int argc, char **argv)
 	//remember that rotations take radians as arguments, not degree,
 	// (M_PI / 2) = 90degree.
 	scale		= create_scaling_matrix(4.0, 4.0, 0.955555);
-	rot_x		= create_rotation_x_matrix(0.785398);
+	//rot_x		= create_rotation_x_matrix(0.785398);
+	rot_x		= create_rotation_x_matrix(degrees_to_radians(45));
 	//rot_z		= create_rotation_z_matrix(M_PI / 2);
 	rot_z		= create_rotation_z_matrix(0.785398);
 	translation = create_translation_matrix(100, 100, 0);
