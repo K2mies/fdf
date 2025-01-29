@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:06:42 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:09:43 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ void	free_point_arr(t_data *data)
 
 	i = -1;
 	while (++i < data->rows)
+	{
 		free(data->points[i]);
+		free(data->p2d[i]);
+	}
 	free(data->points);
+	free(data->p2d);
 }
 
 // Function to convert from degrees to radians

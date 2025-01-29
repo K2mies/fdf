@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/01/27 15:59:38 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/01/29 15:42:47 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ WHITE = \033[0;97m
 #------------------------------------------------------------------------------------
 NAME	= fdf
 CC		= cc
-CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX 	= ./lib/MLX42
 LIBFT	= ./lib/libft/libft.a
 

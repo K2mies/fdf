@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:44:04 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:00:14 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -78,7 +78,7 @@ int32_t	main(int argc, char **argv)
 
 	
 	// Create transform matricies here
-	scale		= create_scaling_matrix(1.0, 1.0, 1.0);
+	scale		= create_scaling_matrix(1.0, 1.0, 0.1);
 	rot_x		= create_rotation_x_matrix(deg_to_rad(45));
 	rot_z		= create_rotation_z_matrix(deg_to_rad(45));
 	//translation = create_translation_matrix((data->width / 2.0), (data->height / 2.0), 0);
@@ -108,7 +108,7 @@ int32_t	main(int argc, char **argv)
 	//Function to center the projection to the center of screen. 
 	//offset_view(data);
 	
-	// Function to get the Max and Min values of view space
+	// Function to get the Max and Min values of view space object
 	get_max(data);
 
 	//Function to return space to 0 pos (for scale operations()
@@ -125,10 +125,14 @@ int32_t	main(int argc, char **argv)
 
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, data->img);
-	mlx_terminate(mlx);
-	
+
+	// free things left over.
 	free(o);
 	free_point_arr(data);
 	free(data);
+
+	//Terminate mlx;
+	mlx_terminate(mlx);
+	
 	return (EXIT_SUCCESS);
 }
