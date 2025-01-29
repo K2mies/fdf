@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 16:09:43 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:02:49 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	free_arr(char **arr)
 
 	i = 0;
 	while (arr[i])
-	{
 		free(arr[i++]);
-	}
 	free(arr);
 }
 

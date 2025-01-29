@@ -1,42 +1,42 @@
-==152315== Memcheck, a memory error detector
-==152315== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==152315== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==152315== Command: ./fdf ./maps/elem-col.fdf
-==152315== Parent PID: 145138
-==152315== 
-==152315== Invalid read of size 8
-==152315==    at 0x40286A8: strncmp (strcmp.S:172)
-==152315==    by 0x400668D: is_dst (dl-load.c:216)
-==152315==    by 0x400810E: _dl_dst_count (dl-load.c:253)
-==152315==    by 0x400810E: expand_dynamic_string_token (dl-load.c:395)
-==152315==    by 0x40082B7: fillin_rpath.isra.0 (dl-load.c:483)
-==152315==    by 0x4008602: decompose_rpath (dl-load.c:654)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:696)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:677)
-==152315==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
-==152315==    by 0x4003494: openaux (dl-deps.c:64)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
-==152315==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400DF99: dl_open_worker (dl-open.c:782)
-==152315==  Address 0x4fbda89 is 9 bytes inside a block of size 15 alloc'd
-==152315==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==152315==    by 0x40271DF: malloc (rtld-malloc.h:56)
-==152315==    by 0x40271DF: strdup (strdup.c:42)
-==152315==    by 0x4008594: decompose_rpath (dl-load.c:629)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:696)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:677)
-==152315==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
-==152315==    by 0x4003494: openaux (dl-deps.c:64)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
-==152315==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400DF99: dl_open_worker (dl-open.c:782)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400E34D: _dl_open (dl-open.c:883)
-==152315== 
+==158467== Memcheck, a memory error detector
+==158467== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==158467== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==158467== Command: ./fdf ./maps/elem-col.fdf
+==158467== Parent PID: 157473
+==158467== 
+==158467== Invalid read of size 8
+==158467==    at 0x40286A8: strncmp (strcmp.S:172)
+==158467==    by 0x400668D: is_dst (dl-load.c:216)
+==158467==    by 0x400810E: _dl_dst_count (dl-load.c:253)
+==158467==    by 0x400810E: expand_dynamic_string_token (dl-load.c:395)
+==158467==    by 0x40082B7: fillin_rpath.isra.0 (dl-load.c:483)
+==158467==    by 0x4008602: decompose_rpath (dl-load.c:654)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:696)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:677)
+==158467==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
+==158467==    by 0x4003494: openaux (dl-deps.c:64)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
+==158467==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400DF99: dl_open_worker (dl-open.c:782)
+==158467==  Address 0x4fbda89 is 9 bytes inside a block of size 15 alloc'd
+==158467==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==158467==    by 0x40271DF: malloc (rtld-malloc.h:56)
+==158467==    by 0x40271DF: strdup (strdup.c:42)
+==158467==    by 0x4008594: decompose_rpath (dl-load.c:629)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:696)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:677)
+==158467==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
+==158467==    by 0x4003494: openaux (dl-deps.c:64)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
+==158467==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400DF99: dl_open_worker (dl-open.c:782)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400E34D: _dl_open (dl-open.c:883)
+==158467== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Addr8
@@ -56,38 +56,38 @@
    fun:_dl_catch_exception
    fun:dl_open_worker
 }
-==152315== Invalid read of size 8
-==152315==    at 0x40286A8: strncmp (strcmp.S:172)
-==152315==    by 0x400668D: is_dst (dl-load.c:216)
-==152315==    by 0x4007F79: _dl_dst_substitute (dl-load.c:295)
-==152315==    by 0x40082B7: fillin_rpath.isra.0 (dl-load.c:483)
-==152315==    by 0x4008602: decompose_rpath (dl-load.c:654)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:696)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:677)
-==152315==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
-==152315==    by 0x4003494: openaux (dl-deps.c:64)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
-==152315==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400DF99: dl_open_worker (dl-open.c:782)
-==152315==  Address 0x4fbda89 is 9 bytes inside a block of size 15 alloc'd
-==152315==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==152315==    by 0x40271DF: malloc (rtld-malloc.h:56)
-==152315==    by 0x40271DF: strdup (strdup.c:42)
-==152315==    by 0x4008594: decompose_rpath (dl-load.c:629)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:696)
-==152315==    by 0x400ABF5: cache_rpath (dl-load.c:677)
-==152315==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
-==152315==    by 0x4003494: openaux (dl-deps.c:64)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
-==152315==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400DF99: dl_open_worker (dl-open.c:782)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400E34D: _dl_open (dl-open.c:883)
-==152315== 
+==158467== Invalid read of size 8
+==158467==    at 0x40286A8: strncmp (strcmp.S:172)
+==158467==    by 0x400668D: is_dst (dl-load.c:216)
+==158467==    by 0x4007F79: _dl_dst_substitute (dl-load.c:295)
+==158467==    by 0x40082B7: fillin_rpath.isra.0 (dl-load.c:483)
+==158467==    by 0x4008602: decompose_rpath (dl-load.c:654)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:696)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:677)
+==158467==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
+==158467==    by 0x4003494: openaux (dl-deps.c:64)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
+==158467==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400DF99: dl_open_worker (dl-open.c:782)
+==158467==  Address 0x4fbda89 is 9 bytes inside a block of size 15 alloc'd
+==158467==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==158467==    by 0x40271DF: malloc (rtld-malloc.h:56)
+==158467==    by 0x40271DF: strdup (strdup.c:42)
+==158467==    by 0x4008594: decompose_rpath (dl-load.c:629)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:696)
+==158467==    by 0x400ABF5: cache_rpath (dl-load.c:677)
+==158467==    by 0x400ABF5: _dl_map_object (dl-load.c:2165)
+==158467==    by 0x4003494: openaux (dl-deps.c:64)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x4003C7B: _dl_map_object_deps (dl-deps.c:248)
+==158467==    by 0x400EA0E: dl_open_worker_begin (dl-open.c:592)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400DF99: dl_open_worker (dl-open.c:782)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400E34D: _dl_open (dl-open.c:883)
+==158467== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Addr8
@@ -106,27 +106,27 @@
    fun:_dl_catch_exception
    fun:dl_open_worker
 }
-==152315== 
-==152315== HEAP SUMMARY:
-==152315==     in use at exit: 317,955 bytes in 3,107 blocks
-==152315==   total heap usage: 82,903 allocs, 79,796 frees, 59,995,521 bytes allocated
-==152315== 
-==152315== 0 bytes in 1 blocks are definitely lost in loss record 1 of 2,271
-==152315==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==152315==    by 0x4005A22: malloc (rtld-malloc.h:56)
-==152315==    by 0x4005A22: _dl_find_object_update (dl-find_object.c:791)
-==152315==    by 0x400ECCF: dl_open_worker_begin (dl-open.c:735)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400DF99: dl_open_worker (dl-open.c:782)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x400E34D: _dl_open (dl-open.c:883)
-==152315==    by 0x4A4F63B: dlopen_doit (dlopen.c:56)
-==152315==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
-==152315==    by 0x4B33B62: _dl_catch_error (dl-error-skeleton.c:227)
-==152315==    by 0x4A4F12D: _dlerror_run (dlerror.c:138)
-==152315==    by 0x4A4F6C7: dlopen_implementation (dlopen.c:71)
-==152315==    by 0x4A4F6C7: dlopen@@GLIBC_2.34 (dlopen.c:81)
-==152315== 
+==158467== 
+==158467== HEAP SUMMARY:
+==158467==     in use at exit: 317,955 bytes in 3,107 blocks
+==158467==   total heap usage: 81,780 allocs, 78,673 frees, 59,858,717 bytes allocated
+==158467== 
+==158467== 0 bytes in 1 blocks are definitely lost in loss record 1 of 2,271
+==158467==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==158467==    by 0x4005A22: malloc (rtld-malloc.h:56)
+==158467==    by 0x4005A22: _dl_find_object_update (dl-find_object.c:791)
+==158467==    by 0x400ECCF: dl_open_worker_begin (dl-open.c:735)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400DF99: dl_open_worker (dl-open.c:782)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x400E34D: _dl_open (dl-open.c:883)
+==158467==    by 0x4A4F63B: dlopen_doit (dlopen.c:56)
+==158467==    by 0x4B33A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==158467==    by 0x4B33B62: _dl_catch_error (dl-error-skeleton.c:227)
+==158467==    by 0x4A4F12D: _dlerror_run (dlerror.c:138)
+==158467==    by 0x4A4F6C7: dlopen_implementation (dlopen.c:71)
+==158467==    by 0x4A4F6C7: dlopen@@GLIBC_2.34 (dlopen.c:81)
+==158467== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
@@ -146,14 +146,14 @@
    fun:dlopen_implementation
    fun:dlopen@@GLIBC_2.34
 }
-==152315== LEAK SUMMARY:
-==152315==    definitely lost: 0 bytes in 1 blocks
-==152315==    indirectly lost: 0 bytes in 0 blocks
-==152315==      possibly lost: 0 bytes in 0 blocks
-==152315==    still reachable: 317,955 bytes in 3,106 blocks
-==152315==         suppressed: 0 bytes in 0 blocks
-==152315== Reachable blocks (those to which a pointer was found) are not shown.
-==152315== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==152315== 
-==152315== For lists of detected and suppressed errors, rerun with: -s
-==152315== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==158467== LEAK SUMMARY:
+==158467==    definitely lost: 0 bytes in 1 blocks
+==158467==    indirectly lost: 0 bytes in 0 blocks
+==158467==      possibly lost: 0 bytes in 0 blocks
+==158467==    still reachable: 317,955 bytes in 3,106 blocks
+==158467==         suppressed: 0 bytes in 0 blocks
+==158467== Reachable blocks (those to which a pointer was found) are not shown.
+==158467== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==158467== 
+==158467== For lists of detected and suppressed errors, rerun with: -s
+==158467== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
