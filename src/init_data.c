@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:06:29 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:04:40 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ void	memset_points(t_data *data)
 			data->points[i][j].z = 0;
 			data->points[i][j].w = 1;
 			data->points[i][j].rgba = 0;
-			ft_printf("%d\n", data->points[i][j].z);
 			j++;
 		}
 		i++;

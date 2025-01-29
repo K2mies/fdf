@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:18:31 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:29:50 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:58:58 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res)
 	res->y = (m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3]);
 	//res->x = (res->x + 1) * 0.5 * WIDTH;
 	//res->y = (1 - res->y) * 0.5 * HEIGHT;
-	res->x *= 100;
-	res->y *= 100;
+	//res->x *= 100;
+	//res->y *= 100;
 }
 
 

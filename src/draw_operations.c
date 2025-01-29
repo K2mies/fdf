@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:11:33 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:15:54 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:54:44 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@ void	color_fill(t_data *data)
 }
 
 // Function to draw the whole grid
-void draw(t_data *data)
+void	draw(t_data *data)
 {
-    int i; 
-	int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (i < data->rows)
-    {
-        j = 0;
-        while (j < data->cols)
-        {
-            if (i < data->rows - 1)
-                draw_line(data, (int)data->p2d[i][j].x, (int)data->p2d[i][j].y, 
-                          (int)data->p2d[i + 1][j].x, (int)data->p2d[i + 1][j].y, WHITE);
-            if (j < data->cols - 1)
-                draw_line(data, (int)data->p2d[i][j].x, (int)data->p2d[i][j].y, 
-                          (int)data->p2d[i][j + 1].x, (int)data->p2d[i][j + 1].y, WHITE);
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->cols)
+		{
+			if (i < data->rows - 1)
+				draw_line(data, (int)data->p2d[i][j].x, (int)data->p2d[i][j].y,
+					(int)data->p2d[i + 1][j].x, (int)data->p2d[i + 1][j].y, WHITE);
+			if (j < data->cols - 1)
+				draw_line(data, (int)data->p2d[i][j].x, (int)data->p2d[i][j].y,
+					(int)data->p2d[i][j + 1].x, (int)data->p2d[i][j + 1].y, WHITE);
+			j++;
+		}
+		i++;
+	}
 }

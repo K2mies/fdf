@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:36:48 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:44:04 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -78,7 +78,7 @@ int32_t	main(int argc, char **argv)
 
 	
 	// Create transform matricies here
-	scale		= create_scaling_matrix(4.0, 4.0, 4.0);
+	scale		= create_scaling_matrix(1.0, 1.0, 1.0);
 	rot_x		= create_rotation_x_matrix(deg_to_rad(45));
 	rot_z		= create_rotation_z_matrix(deg_to_rad(45));
 	//translation = create_translation_matrix((data->width / 2.0), (data->height / 2.0), 0);

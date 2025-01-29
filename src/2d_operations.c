@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:22:49 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:57:49 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 // Function to scale in view Space based on max values / screen.
 void	scale_view(t_data *data)
 {
-	double scale_x;
+	double	scale_x;
 	double	scale_y;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	scale_x = 0;
 	scale_y = 0;
-
 	scale_x = 0.1 * data->width / data->x_max;
-	scale_y =  0.1 * data->height / data->y_max;
+	scale_y = 0.1 * data->height / data->y_max;
 	printf("max x = %.2f\nmax y = %.2f\n", data->x_max, data->y_max);
 	printf("scale x = %.2f\nscale y = %.2f", scale_x, scale_y);
-	
 	i = 0;
 	while (i < data->rows)
 	{
@@ -46,13 +44,12 @@ void	scale_view(t_data *data)
 void	offset_view(t_data *data)
 {
 	int	i;
-	int j;
+	int	j;
 	int	c_x;
 	int	c_y;
 
 	c_x = data->width / 2.0;
-	c_y	= data->height / 2.0;
-	
+	c_y = data->height / 2.0;
 	i = 0;
 	while (i < data->rows)
 	{
@@ -72,12 +69,11 @@ void	center_view(t_data *data)
 {
 	int	i;
 	int	j;
-	int c_x;
+	int	c_x;
 	int	c_y;
 
 	c_x = data->width / 2.0;
 	c_y = data->height / 2.0;
-
 	i = 0;
 	while (i < data->rows)
 	{
