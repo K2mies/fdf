@@ -6,95 +6,10 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/28 16:19:23 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:36:48 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
-
-// Function to fill the background with black useing put_pixel()
-void	color_fill(t_data *data)
-{
-	uint32_t	i;
-	uint32_t	j;
-
-	i = 0;
-	j = 0;
-	while (i < data->img->width)
-	{
-		j = 0;
-		while (j < data->img->height)
-		{
-			mlx_put_pixel(data->img, i, j, BLACK);
-			j++;
-		}
-		i++;
-	}
-}
-
-// Function to apply matrix transformation to all 3d point vec4 vectors
-void multiply_points(t_data *data, t_matrix *matrix)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < data->rows)
-	{
-		j = 0;
-		while(j < data->cols)
-		{
-			data->points[i][j] = matrix_multiply_vector(*matrix, data->points[i][j]);
-			j++;
-		}
-		i++;
-	}
-}
-
-// Function to project into 2d space with orthographic projection. 
-void	ortho_project(t_data *data, t_matrix orthographic)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (i < data->rows)
-	{
-		j = 0;
-		while (j < data->cols)
-		{
-			project_3d_to_2d(data->points[i][j], orthographic, &data->p2d[i][j]);
-			j++;
-		}
-		i++;
-	}
-}
-
-// Function to draw the whole grid
-void draw(t_data *data)
-{
-    int i; 
-	int j;
-
-    i = 0;
-    while (i < data->rows)
-    {
-        j = 0;
-        while (j < data->cols)
-        {
-            if (i < data->rows - 1)
-                draw_line(data, (int)data->p2d[i][j].x, (int)data->p2d[i][j].y, 
-                          (int)data->p2d[i + 1][j].x, (int)data->p2d[i + 1][j].y, WHITE);
-            if (j < data->cols - 1)
-                draw_line(data, (int)data->p2d[i][j].x, (int)data->p2d[i][j].y, 
-                          (int)data->p2d[i][j + 1].x, (int)data->p2d[i][j + 1].y, WHITE);
-            j++;
-        }
-        i++;
-    }
-}
-
 
 // Error function for mlx
 static void	ft_error(void)
@@ -124,17 +39,19 @@ int32_t	main(int argc, char **argv)
 	// Print paramaters for data
 	ft_printf("len = %d\nrows = %d\ncolumns = %d\n", data->len, data->rows, data->cols);
 
-	// Print the parsed maps
+	// Parse the 3d point array
 	parse_points(argv, data);
-	print_arr(data, 'x');
-	printf("\n");
-	print_arr(data, 'y');
-	printf("\n");
-	print_arr(data, 'z');
-	printf("\n");
-	print_arr(data, 'w');
-	printf("\n");
-	print_arr(data, 'c');
+
+	// Print the parsed maps
+//	print_arr(data, 'x');
+//	printf("\n");
+//	print_arr(data, 'y');
+//	printf("\n");
+//	print_arr(data, 'z');
+//	printf("\n");
+//	print_arr(data, 'w');
+//	printf("\n");
+//	print_arr(data, 'c');
 
 	//MLX ----------------------------------------------------------------------------
 	mlx_set_setting(MLX_MAXIMIZED, true);
@@ -150,43 +67,59 @@ int32_t	main(int argc, char **argv)
 	// FILL BACKGROUND COLOR HERE
 	color_fill(data);
 
-	//init	translate operations here
+	//init	transform operations here
 	t_matrix	scale;
 	t_matrix	rot_x;
 	t_matrix	rot_z;
-	t_matrix	translation;
+	//t_matrix	translation;
 
 	//remember that rotations take radians as arguments, not degree,
 	// (M_PI / 2) = 90degree.
 
+	
 	// Create transform matricies here
 	scale		= create_scaling_matrix(4.0, 4.0, 4.0);
 	rot_x		= create_rotation_x_matrix(deg_to_rad(45));
-	//rot_z		= create_rotation_z_matrix(M_PI / 2);
 	rot_z		= create_rotation_z_matrix(deg_to_rad(45));
-	translation = create_translation_matrix(100, 100, 0);
+	//translation = create_translation_matrix((data->width / 2.0), (data->height / 2.0), 0);
+	//translation = create_translation_matrix(100, 100, 0);
 
 	// Apply transform operations here (the order matters)
 	multiply_points(data, &scale);
 	multiply_points(data, &rot_z);
 	multiply_points(data, &rot_x);
-	multiply_points(data, &translation);
+	//multiply_points(data, &translation);
 
 	// ORTHOGRAPHIC PROJECTION
 	//Here we handle the paramaters in a struct.
 	t_matrix	orthographic;
 	t_ortho_data	*o;
 	o = malloc(sizeof(t_ortho_data));
-	o->left = -10.0f;
-	o->right = 10.0f;
-	o->bottom = -7.5f;
-	o->top = 7.5f;
+	o->left = -50.0f;
+	o->right = 50.0f;
+	o->bottom = -50.0f;
+	o->top = 50.0f;
 	o->near = 0.1f;
 	o->far = 100.0f;
 
 	orthographic = create_orthographic_matrix(o);
 	ortho_project(data, orthographic);
+
+	//Function to center the projection to the center of screen. 
+	//offset_view(data);
 	
+	// Function to get the Max and Min values of view space
+	get_max(data);
+
+	//Function to return space to 0 pos (for scale operations()
+	//center_view(data);
+	
+	// Function to scale in view space
+	scale_view(data);
+	
+	// Recenter after scale operation.
+	offset_view(data);
+
 	// Draw the actual model
 	draw(data);
 

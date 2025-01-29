@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/28 16:19:28 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:24:57 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct 		s_data
 {
 		int			width;
 		int			height;
+		double		x_max;
+		double		y_max;
 		int			len;
 		int			rows;
 		int			cols;
@@ -115,8 +117,18 @@ t_matrix	create_translation_matrix(double tx, double ty, double tz);
 t_matrix	create_orthographic_matrix(t_ortho_data *o);
 t_matrix	create_perspective_matrix(double fov, double ar, double n, double f);
 void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
+void		multiply_points(t_data *data, t_matrix *matrix);
+void		ortho_project(t_data *data, t_matrix orthographic);
 // Line draw---------------------------------------------------------------------------
 void		draw_line(t_data *data, int x0, int y0, int x1, int y2, uint32_t color);
+// Draw operations--------------------------------------------------------------------
+void		color_fill(t_data *data);
+void		draw(t_data *data);
+// 2d operations-----------------------------------------------------------------------
+void		scale_view(t_data *data);
+void		offset_view(t_data *data);
+void		center_view(t_data *data);
+void		get_max(t_data *data);
 // Utils-------------------------------------------------------------------------------
 double		deg_to_rad(double degrees);
 void		free_point_arr(t_data *data);

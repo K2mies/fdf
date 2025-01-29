@@ -6,12 +6,13 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/28 15:44:57 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:06:42 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// Function to free array
 void	free_arr(char **arr)
 {
 	int	i;
@@ -24,6 +25,7 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
+// Function to free 3d point array.
 void	free_point_arr(t_data *data)
 {
 	int		i;

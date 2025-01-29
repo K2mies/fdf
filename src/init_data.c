@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 10:11:41 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/28 10:51:27 by rhvidste         ###   ########.fr       */
+/*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
+/*   Updated: 2025/01/29 14:06:29 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,21 @@ t_data	*init_data(void)
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return (NULL);
+	{
+		perror("Failed to allocate memory for data");
+		exit(EXIT_FAILURE);
+	}
 	data->width = 0;
 	data->height = 0;
+	data->x_max = 0;
+	data->y_max = 0;
 	data->len = 0;
 	data->rows = 0;
 	data->cols = 0;
 	data->fd = 0;
 	data->line = 0;
 	data->points = NULL;
+	data->p2d = NULL;
 	data->img = NULL;
 	return (data);
 }

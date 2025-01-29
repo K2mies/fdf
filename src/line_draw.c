@@ -6,11 +6,20 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:55:14 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/28 16:19:11 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:09:44 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static	int	is_valid(t_data *data, int x0, int y0, int x1, int y1)
+{
+	if (!((x0 > 0 && x0 < data->width) && (y0 > 0 && y0 < data->height)))
+		return (0);
+	if (!((x1 > 0 && x1 < data->width) && (y1 > 0 && y1 < data->height)))
+		return (0);
+	return (1);
+}
 
 void	draw_line(t_data *data, int x0, int y0, int x1, int y1, uint32_t color)
 {
@@ -29,7 +38,12 @@ void	draw_line(t_data *data, int x0, int y0, int x1, int y1, uint32_t color)
 
 	while (1)
 	{
-		mlx_put_pixel(data->img, x0, y0, color);
+		//if(((x0 > 0 && x0 < data->width) && (y0 > 0 && y0 < data->height))
+			//&& ((x1 > 0 && x1 < data->width) && (y1 > 0 && y1 < data->height)))
+		if (is_valid(data, x0, y0, x1, y1))
+		{
+			mlx_put_pixel(data->img, x0, y0, color);
+		}
 		if (x0 == x1 && y0 == y1)
 			break;
 		e2 = 2 * err;
