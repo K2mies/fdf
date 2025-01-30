@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/30 16:43:31 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:03:29 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -71,7 +71,7 @@ int32_t	main(int argc, char **argv)
 	if (!data->img || (mlx_image_to_window(mlx, data->img, 0, 0) < 0))
 		ft_error();
 	//get monitor size here;
-	//mlx_get_monitor_size(0, &data->width, &data->height);
+//	mlx_get_monitor_size(0, &data->width, &data->height);
 	//print monitor dimensions
 	printf("monitor x = %d\nmonitor y = %d\n", data->width, data->height);
 	
@@ -79,28 +79,28 @@ int32_t	main(int argc, char **argv)
 	color_fill(data);
 	
 	//init	transform operations here
-	//t_matrix	scale;
+//	t_matrix	scale;
 	t_matrix	rot_x;
 	t_matrix	rot_z;
-	//t_matrix	translation;
+//	t_matrix	translation;
 
 	//remember that rotations take radians as arguments, not degree,
 	// (M_PI / 2) = 90degree.
 
 			
 	// Create transform matricies here
-	//scale		= create_scaling_matrix(1.0, 1.0, 1.0);
+//	scale		= create_scaling_matrix(1.0, 1.0, 1.0);
 	rot_x		= create_rotation_x_matrix(deg_to_rad(45));
 	rot_z		= create_rotation_z_matrix(deg_to_rad(45));
 	//translation = create_translation_matrix((data->width / 2.0), (data->height / 2.0), 0);
-	//translation = create_translation_matrix(100, 100, 0);
+//	translation = create_translation_matrix(0, 0, -50);
 
 
 	// Apply transform operations here (the order matters)
-	//multiply_points(data, &scale);
+//	multiply_points(data, &scale);
 	multiply_points(data, &rot_z);
 	multiply_points(data, &rot_x);
-	//multiply_points(data, &translation);
+//	multiply_points(data, &translation);
 	
 	// ORTHOGRAPHIC PROJECTION
 	//Here we handle the paramaters in a struct.
@@ -122,21 +122,21 @@ int32_t	main(int argc, char **argv)
 //	printf("\n");
 
 	// PERSPECTIVE PROJECTION(not working yet, also need to edit 3d->2d function to handle w)
-	//t_matrix	perspective;
-	//perspective = create_perspective_matrix(60.0, (data->width / data->height), 1.0, 100.0);
-	//perspective = create_perspective_matrix(45.0, 16.0 / 9.0, 1.0, 100.0);
-	//multiply_points(data, &perspective);
-	//ortho_project(data, perspective);
+//	t_matrix	perspective;
+//	perspective = create_perspective_matrix(60.0, (data->width / data->height), 1.0, 100.0);
+//	perspective = create_perspective_matrix(45.0, 16.0 / 9.0, 1.0, 100.0);
+//	multiply_points(data, &perspective);
+//	ortho_project(data, perspective);
 
 	
 	//Function to center the projection to the center of screen. 
-	//offset_view(data);
+//	offset_view(data);
 	
 	// Function to get the Max and Min values of view space object
 	get_max(data);
 
 	//Function to return space to 0 pos (for scale operations()
-	//center_view(data);
+//	center_view(data);
 	
 	// Function to scale in view space
 	scale_view(data);
