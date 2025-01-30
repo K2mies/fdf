@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 17:02:52 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:26:52 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -50,8 +50,8 @@ int32_t	main(int argc, char **argv)
 //	print_arr(data, 'z');
 //	printf("\n");
 //	print_arr(data, 'w');
-//	printf("\n");
-//	print_arr(data, 'c');
+	printf("\n");
+	print_arr(data, 'c');
 
 	//MLX ----------------------------------------------------------------------------
 	mlx_set_setting(MLX_MAXIMIZED, true);

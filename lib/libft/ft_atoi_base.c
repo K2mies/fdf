@@ -6,13 +6,13 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:18:44 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/24 11:05:15 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:48:08 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isvalid(char ch, int base)
+static int	ft_isvalid(char ch, int base)
 {
 	char	*lcbase;
 	char	*ucbase;
@@ -30,7 +30,7 @@ int	ft_isvalid(char ch, int base)
 	return (0);
 }
 
-unsigned int	ft_parse(int i, char *str, int base)
+static unsigned int	ft_parse(int i, char *str, int base)
 {
 	unsigned int	res;
 	int				c;
@@ -50,13 +50,20 @@ unsigned int	ft_parse(int i, char *str, int base)
 	return (res);
 }
 
-int	check_prefex(char *str, int i)
+static int	check_prefex(char *str, int i)
 {
 	if (str[0] == '0' && str[1] == 'x')
 		i = 2;
 	else
 		i = 0;
 	return (i);
+}
+
+static char	*check_suffix(char *str)
+{
+	if (ft_strlen(str) < 9)
+		str = ft_strjoin(str, "FF");
+	return (str);
 }
 
 unsigned int	ft_atoi_base(char *str, int base)
@@ -68,6 +75,7 @@ unsigned int	ft_atoi_base(char *str, int base)
 	sign = 1;
 	res = 0;
 	i = 0;
+	str = check_suffix(str);
 	i = check_prefex(str, i);
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;

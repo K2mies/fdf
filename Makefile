@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/01/30 11:15:42 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/01/30 12:03:09 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ SRCS	= $(shell find $(SRC_DIR) -iname "*.c")
 #OBJS	= ${SRCS:.c=.o}
 OBJS 	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
-
-
 INC		= include/
 SRC_DIR = src/
 OBJ_DIR = obj/
@@ -42,10 +40,12 @@ OBJ_DIR = obj/
 start:
 		make all
 
-all: libmlx $(NAME)
+all: libmlx libft $(NAME)
 
 libmlx:
 		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+
+libft: $(LIBFT)
 
 $(LIBFT):
 		make -C ./lib/libft
@@ -53,7 +53,7 @@ $(LIBFT):
 #%.o: %.c
 #		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-$(NAME): $(OBJ_DIR) $(OBJS) $(LIBFT)
+$(NAME): $(OBJ_DIR) $(OBJS) libft
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)
 		@echo "$(GREEN)Succesfully built fdf!$(DEF_COLOR)"
 
@@ -76,7 +76,7 @@ fclean: clean
 		@echo "$(CYAN)fdf executable files cleaned!$(DEF_COLOR)"
 		@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
 
-re: clean all
+re: fclean all
 		@echo "$(GREEN)Cleaned and rebuilt everything for fdf!$(DEF_COLOR)"
 
-.PHONY: all, clean, fclean, re, libmlx
+.PHONY: all clean fclean re libmlx libft
