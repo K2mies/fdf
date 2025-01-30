@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:18:31 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:58:58 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:47:15 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ void	project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res)
 {
 	//double	w;
 
-		 //w =  m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3];
+	//	 w =  m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3];
 	//res->x = (m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3]) / w;
 	//res->y = (m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3]) / w;
 	res->x = (m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3]);
 	res->y = (m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3]);
+	res->rgba = v.rgba;
 	//res->x = (res->x + 1) * 0.5 * WIDTH;
 	//res->y = (1 - res->y) * 0.5 * HEIGHT;
 	//res->x *= 100;

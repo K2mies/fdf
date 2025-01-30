@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/30 11:55:02 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:01:56 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ typedef struct		s_vec4
 }		t_vec4;
 
 // Define a 2d vector structure
-typedef struct		s_vec2
+typedef struct			s_vec2
 {
-		double		x;
-		double		y;
+		double			x;
+		double			y;
+		unsigned int	rgba;
 }		t_vec2;
 
 //Define a 4x4 matrix structure
@@ -120,7 +121,7 @@ void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
 void		multiply_points(t_data *data, t_matrix *matrix);
 void		ortho_project(t_data *data, t_matrix orthographic);
 // Line draw---------------------------------------------------------------------------
-void		draw_line(t_data *data, int x0, int y0, int x1, int y2, uint32_t color);
+void		draw_line(t_data *data, t_vec2 p0, t_vec2 p1);
 // Draw operations--------------------------------------------------------------------
 void		color_fill(t_data *data);
 void		draw(t_data *data);

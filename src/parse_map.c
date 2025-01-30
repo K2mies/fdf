@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 16:52:01 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:11:21 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	parse_points(char **argv, t_data *data)
 	if (data->fd < 0 || !data->line)
 		return (0);
 	parse_xy_points(data);
-	//parse_y_points(data, argv);
 	parse_z_points(data, split, split2);
 	reset_parse(argv, data, split, split2);
 	//used to reset variables for each parse.

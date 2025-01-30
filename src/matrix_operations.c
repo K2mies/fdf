@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:13:45 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/29 14:36:34 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:47:10 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_vec4	matrix_multiply_vector(t_matrix m, t_vec4 v)
 		res.y /= res.w;
 		res.z /= res.w;
 	}
+	res.rgba = v.rgba; 
 	return (res);
 }
 
