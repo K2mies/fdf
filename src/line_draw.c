@@ -6,7 +6,7 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:55:14 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 15:06:17 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:38:59 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int gradient(int startcolor, int endcolor, int len, int pix)
     int start_r = R(startcolor), start_g = G(startcolor), start_b = B(startcolor);
     int end_r = R(endcolor), end_g = G(endcolor), end_b = B(endcolor);
 
-//    printf("Start color: 0x%08X (R:%d, G:%d, B:%d)\n", startcolor, start_r, start_g, start_b);
-//    printf("End color: 0x%08X (R:%d, G:%d, B:%d)\n", endcolor, end_r, end_g, end_b);
+//  printf("Start color: 0x%08X (R:%d, G:%d, B:%d)\n", startcolor, start_r, start_g, start_b);
+//  printf("End color: 0x%08X (R:%d, G:%d, B:%d)\n", endcolor, end_r, end_g, end_b);
 
     double r = start_r + (end_r - start_r) * (double)pix / len;
     double g = start_g + (end_g - start_g) * (double)pix / len;
@@ -60,9 +60,9 @@ int gradient(int startcolor, int endcolor, int len, int pix)
 
 //	ft_printf("pix / len = %d\n", pix / len);
 //	(void)pix;
-//    double r = start_r + (end_r - start_r) * (double)0.3;
-//    double g = start_g + (end_g - start_g) * (double)0.3;
-//    double b = start_b + (end_b - start_b) * (double)0.3;
+//  double r = start_r + (end_r - start_r) * (double)0.3;
+//  double g = start_g + (end_g - start_g) * (double)0.3;
+//  double b = start_b + (end_b - start_b) * (double)0.3;
 
     int result_r = clamp((int)r, 0, 255);
     int result_g = clamp((int)g, 0, 255);
@@ -126,7 +126,6 @@ static	int	is_valid(t_data *data, int x0, int y0, int x1, int y1)
 	return (1);
 }
 
-//void	draw_line(t_data *data, int x0, int y0, int x1, int y1, uint32_t color)
 void	draw_line(t_data *data, t_vec2 p0, t_vec2 p1)
 {
 	int	dx;

@@ -6,16 +6,38 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 12:06:08 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:36:32 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-// Error function for mlx
-static void	ft_error(void)
+// Function to start mlx
+void	mlx_start(t_data *data)
 {
-	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
+	mlx_set_setting(MLX_MAXIMIZED, true);
+//	mlx_t *mlx;
+	if (!(data->mlx = mlx_init(WIDTH, HEIGHT, "FDF", true)))
+		ft_error();
+	mlx_get_monitor_size(0, &data->width, &data->height);
+	data->img = mlx_new_image(data->mlx, data->width, data->height);
+	if (!data->img || (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
+		ft_error();
+}
+
+// Function keyhook for escaping the program
+void	my_keyhook(mlx_key_data_t keydata, void *param)
+{
+	t_data *data = (t_data *)param;
+	// If we PRESS the 'ESCAPE' key, print "Hello".
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
+	{
+		ft_printf("test = %d\n", data->width);
+		puts("Escape!");
+		free(data->o);
+		free_point_arr(data);
+		free(data);
+		exit(EXIT_SUCCESS);
+	}
 }
 
 int32_t	main(int argc, char **argv)
@@ -63,15 +85,19 @@ int32_t	main(int argc, char **argv)
 //}
 
 	//MLX ----------------------------------------------------------------------------
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx_t *mlx = mlx_init(WIDTH, HEIGHT, "FDF", true);
-	//get monitor size here;
-	mlx_get_monitor_size(0, &data->width, &data->height);
-	data->img = mlx_new_image(mlx, data->width, data->height);
-	if (!data->img || (mlx_image_to_window(mlx, data->img, 0, 0) < 0))
-		ft_error();
+//	mlx_set_setting(MLX_MAXIMIZED, true);
+//	mlx_t *mlx;
+//	if (!(mlx = mlx_init(WIDTH, HEIGHT, "FDF", true)))
+//		ft_error();
 	//get monitor size here;
 //	mlx_get_monitor_size(0, &data->width, &data->height);
+//	data->img = mlx_new_image(mlx, data->width, data->height);
+//	if (!data->img || (mlx_image_to_window(mlx, data->img, 0, 0) < 0))
+//		ft_error();
+
+	//Function to start mlx
+	mlx_start(data);
+
 	//print monitor dimensions
 	printf("monitor x = %d\nmonitor y = %d\n", data->width, data->height);
 	
@@ -84,15 +110,14 @@ int32_t	main(int argc, char **argv)
 	t_matrix	rot_z;
 //	t_matrix	translation;
 
-	//remember that rotations take radians as arguments, not degree,
-	// (M_PI / 2) = 90degree.
-
+	//Remember that rotations take radians as arguments, not degree,
+	//(M_PI / 2) = 90degree.
 			
 	// Create transform matricies here
 //	scale		= create_scaling_matrix(1.0, 1.0, 1.0);
 	rot_x		= create_rotation_x_matrix(deg_to_rad(45));
 	rot_z		= create_rotation_z_matrix(deg_to_rad(45));
-	//translation = create_translation_matrix((data->width / 2.0), (data->height / 2.0), 0);
+//	translation = create_translation_matrix((data->width / 2.0), (data->height / 2.0), 0);
 //	translation = create_translation_matrix(0, 0, -50);
 
 
@@ -104,17 +129,29 @@ int32_t	main(int argc, char **argv)
 	
 	// ORTHOGRAPHIC PROJECTION
 	//Here we handle the paramaters in a struct.
+	
+	// Function to init orthographic data
 	t_matrix	orthographic;
-	t_ortho_data	*o;
-	o = malloc(sizeof(t_ortho_data));
-	o->left = -50.0f;
-	o->right = 50.0f;
-	o->bottom = -50.0f;
-	o->top = 50.0f;
-	o->near = 0.1f;
-	o->far = 100.0f;
+	init_ortho_data(data);
 
-	orthographic = create_orthographic_matrix(o);
+	data->o->left = -50.0f;
+	data->o->right = 50.0f;
+	data->o->bottom = -50.0f;
+	data->o->top = 50.0f;
+	data->o->near = 0.1f;
+	data->o->far = 100.0f;
+
+//	t_matrix	orthographic;
+//	t_ortho_data	*o;
+//	o = malloc(sizeof(t_ortho_data));
+//	o->left = -50.0f;
+//	o->right = 50.0f;
+//	o->bottom = -50.0f;
+//	o->top = 50.0f;
+//	o->near = 0.1f;
+//	o->far = 100.0f;
+
+	orthographic = create_orthographic_matrix(data->o);
 	ortho_project(data, orthographic);
 
 		
@@ -147,16 +184,20 @@ int32_t	main(int argc, char **argv)
 	// Draw the actual model
 	draw(data);
 
-	mlx_loop(mlx);
-	mlx_delete_image(mlx, data->img);
+	mlx_key_hook(data->mlx, &my_keyhook, data);
+	mlx_loop(data->mlx);
+	mlx_delete_image(data->mlx, data->img);
 
-	// free things left over.
-	free(o);
+	// FREE THINGS LEFT OVER.
+	// Frees orthographic scturct
+	free(data->o);
+	// Frees both 3d and 2d array
 	free_point_arr(data);
+	// Frees global data
 	free(data);
 
 	//Terminate mlx;
-	mlx_terminate(mlx);
+	mlx_terminate(data->mlx);
 	
 	return (EXIT_SUCCESS);
 }

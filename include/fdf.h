@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/30 17:20:08 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:35:42 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,20 @@ typedef struct		s_ortho_data
 // Define a global data structure
 typedef struct 		s_data
 {
-		int			width;
-		int			height;
-		double		x_max;
-		double		y_max;
-		int			len;
-		int			rows;
-		int			cols;
-		int			fd;
-		char		*line;
-		mlx_image_t *img;
-		t_vec4		**points;
-		t_vec2		**p2d;
+		int				width;
+		int				height;
+		double			x_max;
+		double			y_max;
+		int				len;
+		int				rows;
+		int				cols;
+		int				fd;
+		char			*line;
+		mlx_image_t 	*img;
+		mlx_t			*mlx;
+		t_vec4			**points;
+		t_vec2			**p2d;
+		t_ortho_data 	*o;
 }		t_data;
 
 
@@ -100,6 +102,7 @@ int			parse_z_points(t_data *data, char **split, char **split2);
 int			parse_rgba_points(t_data *data, char **split, char **split2);
 // Init data---------------------------------------------------------------------------
 t_data		*init_data();
+void		init_ortho_data(t_data *data);
 void		init_3d_points(t_data *data);
 void		init_2d_points(t_data *data);
 void		memset_points(t_data *data);
@@ -134,5 +137,6 @@ void		get_max(t_data *data);
 double		deg_to_rad(double degrees);
 void		free_point_arr(t_data *data);
 void		free_arr(char **arr);
-
+// Mlx utils--------------------------------------------------------------------------
+void		ft_error(void);
 #endif

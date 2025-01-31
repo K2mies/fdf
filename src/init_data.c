@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/30 14:54:10 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:33:59 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_data	*init_data(void)
 	data->points = NULL;
 	data->p2d = NULL;
 	data->img = NULL;
+	data->mlx = NULL;
+	data->o = NULL;
 	return (data);
 }
 
@@ -111,4 +113,16 @@ void	memset_points(t_data *data)
 		}
 		i++;
 	}
+}
+
+// Function to init orthographic data
+void	init_ortho_data(t_data *data)
+{
+	data->o = malloc(sizeof(t_ortho_data));
+	data->o->left = 00.0f;
+	data->o->right = 00.0f;
+	data->o->bottom = 00.0f;
+	data->o->top = 00.0f;
+	data->o->near = 00.0f;
+	data->o->far = 00.0f;
 }
