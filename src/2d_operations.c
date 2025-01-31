@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/30 17:19:05 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:19:19 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	scale_view(t_data *data)
 	scale_x = 0.1 * data->width / data->x_max;
 	scale_y = 0.1 * data->height / data->y_max;
 	printf("max x = %.2f\nmax y = %.2f\n", data->x_max, data->y_max);
-	printf("scale x = %.2f\nscale y = %.2f", scale_x, scale_y);
+	printf("scale x = %.2f\nscale y = %.2f\n", scale_x, scale_y);
+	printf("atohex(0xff) = %u\n", ft_atoi_base("0xff", 16));
 	i = 0;
 	while (i < data->rows)
 	{

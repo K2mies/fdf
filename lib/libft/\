@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:18:44 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 15:08:12 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:48:27 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,41 @@ static unsigned int	ft_parse(int i, char *str, int base)
 	return (res);
 }
 
+//static int	check_prefex(char *str, int i)
 static char	*check_prefex(char *str)
 {
 	if (str[0] == '0' && str[1] == 'x')
 	{
-		str = ft_substr(str, 2, (ft_strlen(str) - 2));
+		str = ft_substr(str, 2, (ft_strlen(str) - 2))
 	}
+//	if (str[0] == '0' && str[1] == 'x')
+//		i = 2;
+//	else
+//		i = 0;
+//	return (i);
+	return (str)
+}
+
+static char	*check_suffix(char *str)
+{
+	if (ft_strlen(str) == 6)
+	{
+		str = ft_strjoin("00", str);
+	}
+//	if (ft_strlen(str) == 6)
+//	{
+//		str = ft_strjoin(str, "00");
+//	}
+//	if (ft_strlen(str) < 9)
+//		str = ft_strjoin(str, "FF");
 	return (str);
 }
 
-static unsigned int	add_alpha(unsigned int res)
-{
-	res = res << 8 | 0xff;
-	return (res);
-}
+//static unsigned int	add_alpha(unsigned int res)
+//{
+//	res = res << 8 | 0xff;
+//	return (res);
+//}
 
 unsigned int	ft_atoi_base(char *str, int base)
 {
@@ -75,6 +96,8 @@ unsigned int	ft_atoi_base(char *str, int base)
 	res = 0;
 	i = 0;
 	str = check_prefex(str);
+	str = check_suffix(str);
+//	i = check_prefex(str, i);
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-')
@@ -85,6 +108,6 @@ unsigned int	ft_atoi_base(char *str, int base)
 	if (str[i] == '+')
 		i++;
 	res = ft_parse(i, str, base);
-	res = add_alpha(res * sign);
-	return (res);
+	//res = add_alpha(res * sign);
+	return (res * sign);
 }
