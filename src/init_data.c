@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 16:33:59 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:28:27 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,21 @@ t_data	*init_data(void)
 		perror("Failed to allocate memory for data");
 		exit(EXIT_FAILURE);
 	}
-	data->width = 0;
-	data->height = 0;
-	data->x_max = 0;
-	data->y_max = 0;
-	data->len = 0;
-	data->rows = 0;
-	data->cols = 0;
-	data->fd = 0;
-	data->line = 0;
-	data->points = NULL;
-	data->p2d = NULL;
-	data->img = NULL;
-	data->mlx = NULL;
-	data->o = NULL;
+	ft_memset(data, 0, sizeof(t_data));
+	// data->width = 0;
+	// data->height = 0;
+	// data->x_max = 0;
+	// data->y_max = 0;
+	// data->len = 0;
+	// data->rows = 0;
+	// data->cols = 0;
+	// data->fd = 0;
+	// data->line = 0;
+	// data->points = NULL;
+	// data->p2d = NULL;
+	// data->img = NULL;
+	// data->mlx = NULL;
+	// data->o = NULL;
 	return (data);
 }
 

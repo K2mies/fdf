@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 16:35:42 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:28:23 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct 		s_data
 		int				height;
 		double			x_max;
 		double			y_max;
+		double			x_min;
+		double			y_min;
 		int				len;
 		int				rows;
 		int				cols;
@@ -132,7 +134,7 @@ void		draw(t_data *data);
 void		scale_view(t_data *data);
 void		offset_view(t_data *data);
 void		center_view(t_data *data);
-void		get_max(t_data *data);
+void		get_max_and_min(t_data *data);
 // Utils-------------------------------------------------------------------------------
 double		deg_to_rad(double degrees);
 void		free_point_arr(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 16:36:32 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:28:20 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -170,7 +170,7 @@ int32_t	main(int argc, char **argv)
 //	offset_view(data);
 	
 	// Function to get the Max and Min values of view space object
-	get_max(data);
+	get_max_and_min(data);
 
 	//Function to return space to 0 pos (for scale operations()
 //	center_view(data);
