@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:30 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/30 16:27:12 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:34:44 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -30,7 +30,8 @@ int	word_count(const char *str)
 	return (wc);
 }
 
-int		get_map_len(char **argv, t_data *data)
+// Function to get the total len of the map grid.
+int	get_map_len(char **argv, t_data *data)
 {
 	int		wc;
 	int		fd;
@@ -53,6 +54,7 @@ int		get_map_len(char **argv, t_data *data)
 	return (wc);
 }
 
+// Function to get the len of rows.
 int	get_row_count(char **argv, t_data *data)
 {
 	int		rc;
@@ -73,58 +75,88 @@ int	get_row_count(char **argv, t_data *data)
 	free(line);
 	close(fd);
 	data->rows = rc;
-	return(rc);
+	return (rc);
 }
 
+// Function to get collum len.
 int	get_col_count(char **argv, t_data *data)
 {
 	int		cc;
-	int		fd;
-	char	*line;
-	char	**split;
 
-	fd = open(argv[1], O_RDONLY);
-	line = get_next_line(fd);
-	if (fd < 0 || !line)
+	data->fd = open(argv[1], O_RDONLY);
+	data->line = get_next_line(data->fd);
+	if (data->fd < 0 || !data->line)
 		return (0);
 	cc = 0;
-	split = ft_split(line, ' ');
-	while (split[cc])
-		cc++;
+	data->split = ft_split(data->line, ' ');
+	cc = arr_len(data->split);
 	//it needs to run through every line here even if it doesnt use them
 	// in order to free memory correctly. ------------------------------
-	while (line)
+	while (data->line)
 	{
-		free(line);
-		line = get_next_line(fd);
+		free(data->line);
+		data->line = get_next_line(data->fd);
 	}
 	//-------------------------------------------------------------------
-	free(line);
-	free_arr(split);
-	close(fd);
+	free(data->line);
+	free_arr(data->split);
+	close(data->fd);
 	data->cols = cc;
 	return (cc);
 }
 
-int	print_map(char **argv)
-{	
-	int		fd;
-	char	*line;
+//// Function that gets col count and also checks if row lens are
+//// unequal.
+//int get_col_count(char **argv, t_data *data)
+//{
+//    int		cc;
+//
+//    data->fd = open(argv[1], O_RDONLY);
+//    if (data->fd < 0 || !(data->line = get_next_line(data->fd)))
+//        return (0);
+//    data->split = ft_split(data->line, ' ');
+//    cc = arr_len(data->split);
+//    free_arr(data->split);
+//    while (data->line)
+//    {
+//        free(data->line);
+//        if ((data->line = get_next_line(data->fd)))
+//        {
+//            data->split = ft_split(data->line, ' ');
+//            if (cc != arr_len(data->split))
+//			{
+//                ft_printf("invalid map, columns not equal\n");
+//				free(data);
+//				exit(EXIT_FAILURE);
+//			}
+//            free_arr(data->split);
+//        }
+//    }
+//    close(data->fd);
+//    data->cols = cc;
+//    return (cc);
+//}
 
-	fd = open(argv[1], O_RDONLY);
-	line = get_next_line(fd);
-	if (fd < 0 || !line)
-		return (0);
-	while (line)
-	{
-		ft_printf("%s\n", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
-	close(fd);
-	return (1);
-}
+//// Function to print the map
+//int	print_map(char **argv)
+//{	
+//	int		fd;
+//	char	*line;
+//
+//	fd = open(argv[1], O_RDONLY);
+//	line = get_next_line(fd);
+//	if (fd < 0 || !line)
+//		return (0);
+//	while (line)
+//	{
+//		ft_printf("%s\n", line);
+//		free(line);
+//		line = get_next_line(fd);
+//	}
+//	free(line);
+//	close(fd);
+//	return (1);
+//}
 
 // Remember to remove this function from the submition branch as it uses printf
 // Which is an ilegal function for our submitions.
@@ -134,13 +166,11 @@ int	print_arr(t_data *data, char flag)
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-
-	while (i < data->rows)
+	i = -1;
+	while (++i < data->rows)
 	{
-		j = 0;
-		while(j < data->cols)
+		j = -1;
+		while (++j < data->cols)
 		{
 			if (flag == 'x')
 				printf("%.1f ", data->points[i][j].x);
@@ -152,10 +182,8 @@ int	print_arr(t_data *data, char flag)
 				printf("%.1f ", data->points[i][j].w);
 			if (flag == 'c')
 				printf("%X ", data->points[i][j].rgba);
-			j++;
 		}
 		printf("\n");
-		i++;
 	}
 	return (1);
 }

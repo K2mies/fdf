@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 16:19:21 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:17:22 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,15 @@ void	free_point_arr(t_data *data)
 double	deg_to_rad(double degrees)
 {
 	return (degrees * (M_PI / 180.0));
+}
+
+// Function to get the len of an array
+int		arr_len(char **arr)
+{
+	int		i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
 }

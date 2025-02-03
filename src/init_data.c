@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 17:28:27 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:19:36 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	init_2d_points(t_data *data)
 // Can remove this function as it is not relaly usefull anymore.
 // or might still be usefull for implamenting colour 
 //initalization at some point.
-//might need to keep it in to initalize .w variable to 1.0.
+//might need to keep it in to initalize .w variable to 1.0 also.
 void	memset_points(t_data *data)
 {
 	int		i;
@@ -126,4 +126,24 @@ void	init_ortho_data(t_data *data)
 	data->o->top = 00.0f;
 	data->o->near = 00.0f;
 	data->o->far = 00.0f;
+}
+
+// Function to init line data
+void	init_line_data(t_data *data)
+{
+	data->ld = malloc(sizeof(t_line_data));
+//	ft_memset(data->ld, 0, sizeof(t_line_data));
+	data->ld->dx = 0;
+	data->ld->sx = 0;
+	data->ld->dy = 0;
+	data->ld->sy = 0;
+	data->ld->err = 0;
+	data->ld->e2 = 0;
+	data->ld->x0 = 0;
+	data->ld->y0 = 0;
+	data->ld->x1 = 0;
+	data->ld->y1 = 0;
+	data->ld->len = 0;
+	data->ld->pix = 0;
+	data->ld->color = WHITE;
 }

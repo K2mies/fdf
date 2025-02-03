@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/30 17:16:14 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:26:16 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	parse_xy_points(t_data *data)
 		j = 0;
 		while (j < data->cols)
 		{
-			data->points[i][j].y = ((double)i - center_x);
-			data->points[i][j].x = ((double)j - center_y);
+			data->points[i][j].y = ((double)i - center_y);
+			data->points[i][j].x = ((double)j - center_x);
 			j++;
 		}
 		i++;

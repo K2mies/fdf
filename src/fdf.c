@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 17:28:20 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:20:50 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -40,10 +40,44 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	}
 }
 
+// Function to validate map
+bool	validate_map(int argc, char **argv)
+{
+	char	*temp;
+	
+	temp = NULL;	
+	if (argc != 2)
+	{
+		ft_printf("invalid amount of arguments given\n");
+		return (false);
+	}
+	if (ft_strnstr(argv[1], ".fdf", ft_strlen(argv[1])))
+	{
+		temp = ft_strnstr(argv[1], ".fdf", ft_strlen(argv[1]));
+		if (temp[4] != '\0')
+		{
+			printf("is not a valid filetype\n");
+			return (false);
+		}
+	}
+	else
+	{
+		ft_printf("is not a valid .fdf filetype\n");
+		return (false);
+	}
+	return (true);
+}
+
 int32_t	main(int argc, char **argv)
 {
-	if (argc != 2)
-		return (0);
+	//Validate map
+	// Function to validate map
+	if (!(validate_map(argc, argv)))
+	{
+		ft_printf("map is invalid\n");
+		exit(EXIT_FAILURE);
+	}
+
 	//init data	
 	t_data *data;
 	data = init_data();
@@ -65,10 +99,10 @@ int32_t	main(int argc, char **argv)
 	parse_points(argv, data);
 
 	// Print the parsed maps
-//	print_arr(data, 'x');
-//	printf("\n");
-//	print_arr(data, 'y');
-//	printf("\n");
+	print_arr(data, 'x');
+	printf("\n");
+	print_arr(data, 'y');
+	printf("\n");
 //	print_arr(data, 'z');
 //	printf("\n");
 //	print_arr(data, 'w');
@@ -154,6 +188,10 @@ int32_t	main(int argc, char **argv)
 	orthographic = create_orthographic_matrix(data->o);
 	ortho_project(data, orthographic);
 
+	print_arr(data, 'x');
+	printf("\n");
+	print_arr(data, 'y');
+	printf("\n");
 		
 //	print_arr(data, 'c');
 //	printf("\n");
@@ -180,6 +218,9 @@ int32_t	main(int argc, char **argv)
 	
 	// Recenter after scale operation.
 	offset_view(data);
+
+	// init data for line drawing/
+	init_line_data(data);
 
 	// Draw the actual model
 	draw(data);

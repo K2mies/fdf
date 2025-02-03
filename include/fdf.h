@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 17:28:23 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:19:38 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdint.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 //# define WIDTH 2048
 //# define HEIGHT 2048
@@ -67,6 +68,23 @@ typedef struct		s_ortho_data
 		double		far;
 }		t_ortho_data;
 
+typedef struct	s_line_data
+{
+		int				dx;
+		int				sx;
+		int				dy;
+		int				sy;
+		int				err;
+		int				e2;
+		int				x0;
+		int				y0;
+		int				x1;
+		int				y1;
+		int				len;
+		int				pix;
+		unsigned int	color;
+}		t_line_data;
+
 // Define a global data structure
 typedef struct 		s_data
 {
@@ -81,16 +99,17 @@ typedef struct 		s_data
 		int				cols;
 		int				fd;
 		char			*line;
+		char			**split;
 		mlx_image_t 	*img;
 		mlx_t			*mlx;
 		t_vec4			**points;
 		t_vec2			**p2d;
 		t_ortho_data 	*o;
+		t_line_data		*ld;
 }		t_data;
 
 
 // Read map functions------------------------------------------------------------------
-int			print_map(char **argv);
 int			get_row_count(char **argv, t_data *data);
 int			get_col_count(char **argv, t_data *data);
 int			get_map_len(char **argv, t_data *data);
@@ -104,6 +123,7 @@ int			parse_z_points(t_data *data, char **split, char **split2);
 int			parse_rgba_points(t_data *data, char **split, char **split2);
 // Init data---------------------------------------------------------------------------
 t_data		*init_data();
+void		init_line_data(t_data *data);
 void		init_ortho_data(t_data *data);
 void		init_3d_points(t_data *data);
 void		init_2d_points(t_data *data);
@@ -139,6 +159,7 @@ void		get_max_and_min(t_data *data);
 double		deg_to_rad(double degrees);
 void		free_point_arr(t_data *data);
 void		free_arr(char **arr);
+int			arr_len(char **arr);
 // Mlx utils--------------------------------------------------------------------------
 void		ft_error(void);
 #endif
