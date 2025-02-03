@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:51:36 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:59:15 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -229,14 +229,16 @@ int32_t	main(int argc, char **argv)
 	mlx_delete_image(data->mlx, data->img);
 
 	// FREE THINGS LEFT OVER.
+	// Function to free all
+	free_all(data);
 	// Frees orthographic scturct
-	free(data->o);
+//	free(data->o);
 	// Frees line data
-	free(data->ld);
+//	free(data->ld);
 	// Frees both 3d and 2d array
-	free_point_arr(data);
+//	free_point_arr(data);
 	// Frees global data
-	free(data);
+//	free(data);
 
 	//Terminate mlx;
 	mlx_terminate(data->mlx);

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:43:39 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:54:17 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ double		deg_to_rad(double degrees);
 void		free_point_arr(t_data *data);
 void		free_arr(char **arr);
 int			arr_len(char **arr);
+void		free_all(t_data *data);
 // Mlx utils--------------------------------------------------------------------------
 void		ft_error(void);
 

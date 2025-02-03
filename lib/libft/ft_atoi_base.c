@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:18:44 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/01/31 15:08:12 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:00:38 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ unsigned int	ft_atoi_base(char *str, int base)
 		i++;
 	res = ft_parse(i, str, base);
 	res = add_alpha(res * sign);
+	free(str);
 	return (res);
 }

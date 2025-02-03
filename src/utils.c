@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 13:17:22 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:57:37 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,13 @@ int		arr_len(char **arr)
 	while (arr[i])
 		i++;
 	return (i);
+}
+
+// Function to free all data
+void	free_all(t_data *data)
+{
+	free(data->o);
+	free(data->ld);
+	free_point_arr(data);
+	free(data);
 }
