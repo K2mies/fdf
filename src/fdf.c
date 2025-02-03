@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:20:50 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:51:36 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -15,7 +15,6 @@
 void	mlx_start(t_data *data)
 {
 	mlx_set_setting(MLX_MAXIMIZED, true);
-//	mlx_t *mlx;
 	if (!(data->mlx = mlx_init(WIDTH, HEIGHT, "FDF", true)))
 		ft_error();
 	mlx_get_monitor_size(0, &data->width, &data->height);
@@ -232,6 +231,8 @@ int32_t	main(int argc, char **argv)
 	// FREE THINGS LEFT OVER.
 	// Frees orthographic scturct
 	free(data->o);
+	// Frees line data
+	free(data->ld);
 	// Frees both 3d and 2d array
 	free_point_arr(data);
 	// Frees global data

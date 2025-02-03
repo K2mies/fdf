@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 10:39:10 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:50:02 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ void	get_max_and_min(t_data *data)
 	int		i;
 	int		j;
 
-	i = 0;
-	while (i < data->rows)
+	i = -1;
+	while (++i < data->rows)
 	{
-		j = 0;
-		while (j < data->cols)
+		j = -1;
+		while (++j < data->cols)
 		{
 			if (data->p2d[i][j].x > data->x_max)
 				data->x_max = data->p2d[i][j].x;
@@ -113,8 +113,8 @@ void	get_max_and_min(t_data *data)
 				data->x_min = data->p2d[i][j].x;
 			if (data->p2d[i][j].y < data->y_min)
 				data->y_min = data->p2d[i][j].y;
-			j++;
 		}
-		i++;
 	}
+//	data->x_min = data->x_max * -1;
+//	data->y_min = data->y_max * -1;
 }
