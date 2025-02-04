@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/03 15:40:36 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/04 13:32:02 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,9 @@ libft: $(LIBFT)
 $(LIBFT):
 		make -C ./lib/libft
 
+$(LIBMLX):
+		git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX)
+		@echo "$(CYAN)cloned MLX library$(DEF_COLOR)"
 #%.o: %.c
 #		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
@@ -65,7 +68,6 @@ $(OBJ_DIR):
 		@mkdir -p $@
 
 clean:
-		#@rm -rf $(OBJS)
 		@rm -rf $(OBJ_DIR)
 		@rm -rf $(LIBMLX)/build
 		@make clean -C ./lib/libft
