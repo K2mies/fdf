@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/04 13:58:32 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/04 14:10:00 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ libmlx:
 libft: $(LIBFT)
 
 $(LIBMLX):
-		git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX)
+		@git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX)
 		@echo "$(CYAN)cloned MLX library$(DEF_COLOR)"
 
 $(LIBFT):
