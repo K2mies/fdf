@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 11:11:42 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:19:58 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -69,14 +69,14 @@ bool	validate_map(int argc, char **argv)
 
 int32_t	main(int argc, char **argv)
 {
-	//Validate map
 	// Function to validate map
 	if (!(validate_map(argc, argv)))
 	{
 		ft_printf("map is invalid\n");
 		exit(EXIT_FAILURE);
 	}
-
+	
+	// INIT EVERYTHING
 	//init data	
 	t_data *data;
 	data = init_data();
@@ -90,7 +90,8 @@ int32_t	main(int argc, char **argv)
 	init_3d_points(data);
 	init_2d_points(data);
 	memset_points(data);
-	
+	init_line_data(data);
+	init_gradient_data(data);
 	// Print paramaters for data
 	ft_printf("len = %d\nrows = %d\ncolumns = %d\n", data->len, data->rows, data->cols);
 
@@ -107,26 +108,6 @@ int32_t	main(int argc, char **argv)
 //	print_arr(data, 'w');
 //	printf("\n");
 //	print_arr(data, 'c');
-
-	// Function to get width and height of monitor and set mlx to those dimensions
-
-//void	get_dimensions(t_data *data)
-//{
-//	mlx_set_setting(MLX_MAXIMIZED, true);
-//	mlx_t	*mlx;
-//	mlx = mlx_new_image(mlx, WIDTH)
-//}
-
-	//MLX ----------------------------------------------------------------------------
-//	mlx_set_setting(MLX_MAXIMIZED, true);
-//	mlx_t *mlx;
-//	if (!(mlx = mlx_init(WIDTH, HEIGHT, "FDF", true)))
-//		ft_error();
-	//get monitor size here;
-//	mlx_get_monitor_size(0, &data->width, &data->height);
-//	data->img = mlx_new_image(mlx, data->width, data->height);
-//	if (!data->img || (mlx_image_to_window(mlx, data->img, 0, 0) < 0))
-//		ft_error();
 
 	//Function to start mlx
 	mlx_start(data);
@@ -217,12 +198,6 @@ int32_t	main(int argc, char **argv)
 	
 	// Recenter after scale operation
 	offset_view(data);
-
-	// Init gradient data for line drawing
-	init_gradient_data(data);
-
-	// init data for line drawing
-	init_line_data(data);
 
 	// Draw the actual model
 	draw(data);

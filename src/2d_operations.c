@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:50:02 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:15:24 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,17 @@ void	scale_view(t_data *data)
 
 	scale_x = 0;
 	scale_y = 0;
-	// data->width / (data->x_max - data->x_min);
-//	scale_x = 0.1 * data->width / data->x_max;
-//	scale_y = 0.1 * data->height / data->y_max;
 	scale_x = 0.6 * data->width / (data->x_max - data->x_min);
 	scale_y = 0.6 * data->height / (data->y_max - data->y_min);
-	printf("max x = %.2f\nmax y = %.2f\n", data->x_max, data->y_max);
-	printf("min x = %.2f\nmin y = %.2f\n", data->x_min, data->y_min);
-	printf("scale x = %.2f\nscale y = %.2f\n", scale_x, scale_y);
-	printf("atohex(0xff) = %u\n", ft_atoi_base("0xff", 16));
-	i = 0;
-	while (i < data->rows)
+	i = -1;
+	while (++i < data->rows)
 	{
-		j = 0;
-		while (j < data->cols)
+		j = -1;
+		while (++j < data->cols)
 		{
 			data->p2d[i][j].x *= scale_x;
 			data->p2d[i][j].y *= scale_y;
-			j++;
 		}
-		i++;
 	}
 }
 
