@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:51:58 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:55:22 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -61,7 +61,7 @@ int32_t	main(int argc, char **argv)
 	mlx_start(data);
 
 	//print monitor dimensions
-	printf("monitor x = %d\nmonitor y = %d\n", data->width, data->height);
+	ft_printf("monitor x = %d\nmonitor y = %d\n", data->width, data->height);
 	
 	// FILL BACKGROUND COLOR HERE
 	color_fill(data);
@@ -87,7 +87,7 @@ int32_t	main(int argc, char **argv)
 //	multiply_points(data, &scale);
 //	multiply_points(data, &rot_z);
 //	multiply_points(data, &rot_x);
-//	multiply_points(data, &translation);i
+//	multiply_points(data, &translation);
 	orthographic_rotation(data);
 	
 	// ORTHOGRAPHIC PROJECTION
