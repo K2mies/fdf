@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/04 13:32:02 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/04 13:35:29 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ WHITE = \033[0;97m
 #------------------------------------------------------------------------------------
 NAME	= fdf
 CC		= cc
-CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX 	= ./lib/MLX42
 LIBFT	= ./lib/libft/libft.a
 
@@ -71,10 +71,12 @@ clean:
 		@rm -rf $(OBJ_DIR)
 		@rm -rf $(LIBMLX)/build
 		@make clean -C ./lib/libft
+		@make clean -C ./lib/MLX42/build
 
 fclean: clean
 		@rm -rf $(NAME)
 		@rm -rf $(LIBFT)
+		@rm -rf $(LIBMLX)
 		@echo "$(CYAN)fdf executable files cleaned!$(DEF_COLOR)"
 		@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
 
