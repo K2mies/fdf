@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 14:35:14 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:38:47 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ int			parse_xy_points(t_data *data);
 int			parse_z_points(t_data *data, char **split, char **split2);
 int			parse_rgba_points(t_data *data, char **split, char **split2);
 // Init data-----------------------------------------------------------
+t_data		*init_all(int argc, char **argv);
 t_data		*init_data(void);
 void		init_gradient_data(t_data *data);
 void		init_line_data(t_data *data);
@@ -160,6 +161,8 @@ t_matrix	create_perspective_matrix(double fov, double ar,
 void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
 void		multiply_points(t_data *data, t_matrix *matrix);
 void		ortho_project(t_data *data, t_matrix orthographic);
+//Orthograpihc projection---------------------------------------------
+void		ortho_projection(t_data *data);
 // Line draw--------------------------------------------------------
 void		draw_line(t_data *data, t_vec2 p0, t_vec2 p1);
 // Draw operations--------------------------------------------------
@@ -176,8 +179,12 @@ void		free_point_arr(t_data *data);
 void		free_arr(char **arr);
 int			arr_len(char **arr);
 void		free_all(t_data *data);
-// Mlx utils-------------------------------------------------------
+// Mlx ------------------------------------------------------------
+void		mlx_start(t_data *data);
+void		my_keyhook(mlx_key_data_t keydata, void *param);
+// Error-----------------------------------------------------------
 void		ft_error(void);
+bool		validate_map(int argc, char **argv);
 // Line draw utils-------------------------------------------------
 int			clamp(int value, int min, int max);
 int			calculate_pixel_length(int x1, int y1, int x2, int y2);
