@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:57:37 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:47:49 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	free_all(t_data *data)
 {
 	free(data->o);
 	free(data->ld);
+	free(data->gd);
 	free_point_arr(data);
 	free(data);
 }

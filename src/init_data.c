@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:58:13 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:06:12 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,30 +117,38 @@ void	memset_points(t_data *data)
 void	init_ortho_data(t_data *data)
 {
 	data->o = malloc(sizeof(t_ortho_data));
-	data->o->left = 00.0f;
-	data->o->right = 00.0f;
-	data->o->bottom = 00.0f;
-	data->o->top = 00.0f;
-	data->o->near = 00.0f;
-	data->o->far = 00.0f;
+	ft_memset(data->o, 0, sizeof(t_ortho_data));
+//	data->o->left = 00.0f;
+//	data->o->right = 00.0f;
+//	data->o->bottom = 00.0f;
+//	data->o->top = 00.0f;
+//	data->o->near = 00.0f;
+//	data->o->far = 00.0f;
 }
 
 // Function to init line data
 void	init_line_data(t_data *data)
 {
 	data->ld = malloc(sizeof(t_line_data));
-//	ft_memset(data->ld, 0, sizeof(t_line_data));
-	data->ld->dx = 0;
-	data->ld->sx = 0;
-	data->ld->dy = 0;
-	data->ld->sy = 0;
-	data->ld->err = 0;
-	data->ld->e2 = 0;
-	data->ld->x0 = 0;
-	data->ld->y0 = 0;
-	data->ld->x1 = 0;
-	data->ld->y1 = 0;
-	data->ld->len = 0;
-	data->ld->pix = 0;
+	ft_memset(data->ld, 0, sizeof(t_line_data));
+//	data->ld->dx = 0;
+//	data->ld->sx = 0;
+//	data->ld->dy = 0;
+//	data->ld->sy = 0;
+//	data->ld->err = 0;
+//	data->ld->e2 = 0;
+//	data->ld->x0 = 0;
+//	data->ld->y0 = 0;
+//	data->ld->x1 = 0;
+//	data->ld->y1 = 0;
+//	data->ld->len = 0;
+//	data->ld->pix = 0;
 	data->ld->color = WHITE;
+}
+
+void	init_gradient_data(t_data *data)
+{
+	data->gd = malloc(sizeof(t_gradient_data));
+	ft_memset(data->gd, 0, sizeof(t_gradient_data));
+	data->gd->alpha = 255;
 }

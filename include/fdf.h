@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:54:17 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:50:15 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct		s_ortho_data
 		double		far;
 }		t_ortho_data;
 
+//Define a line data struct
 typedef struct	s_line_data
 {
 		int				dx;
@@ -84,6 +85,18 @@ typedef struct	s_line_data
 		int				pix;
 		unsigned int	color;
 }		t_line_data;
+
+// Define a gradient data struct
+typedef struct	s_gradient_data
+{
+		int		start_r;
+		int		start_g;
+		int		start_b;
+		int		end_r;
+		int		end_g;
+		int		end_b;
+		int		alpha;
+}		t_gradient_data;
 
 // Define a global data structure
 typedef struct 		s_data
@@ -106,6 +119,7 @@ typedef struct 		s_data
 		t_vec2			**p2d;
 		t_ortho_data 	*o;
 		t_line_data		*ld;
+		t_gradient_data	*gd;
 }		t_data;
 
 
@@ -123,6 +137,7 @@ int			parse_z_points(t_data *data, char **split, char **split2);
 int			parse_rgba_points(t_data *data, char **split, char **split2);
 // Init data---------------------------------------------------------------------------
 t_data		*init_data();
+void		init_gradient_data(t_data *data);
 void		init_line_data(t_data *data);
 void		init_ortho_data(t_data *data);
 void		init_3d_points(t_data *data);
@@ -168,4 +183,5 @@ void		ft_error(void);
 int			clamp(int value, int min, int max);
 int			calculate_pixel_length(int x1, int y1, int x2, int y2);
 int			is_valid(t_data *data, int x0, int y0, int x1, int y1);
+int			extract_channel(int color, int shift);
 #endif

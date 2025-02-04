@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:31:10 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:52:20 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:52:05 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,11 @@ int	is_valid(t_data *data, int x0, int y0, int x1, int y1)
 	if (!((x1 > 0 && x1 < data->width) && (y1 > 0 && y1 < data->height)))
 		return (0);
 	return (1);
+}
+
+// Function to extract the color channel
+int extract_channel(int color, int shift)
+{
+    return (color >> shift) & 0xFF;
 }
 

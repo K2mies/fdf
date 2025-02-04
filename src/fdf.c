@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:59:15 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:08:51 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -98,10 +98,10 @@ int32_t	main(int argc, char **argv)
 	parse_points(argv, data);
 
 	// Print the parsed maps
-	print_arr(data, 'x');
-	printf("\n");
-	print_arr(data, 'y');
-	printf("\n");
+//	print_arr(data, 'x');
+//	printf("\n");
+//	print_arr(data, 'y');
+//	printf("\n");
 //	print_arr(data, 'z');
 //	printf("\n");
 //	print_arr(data, 'w');
@@ -187,10 +187,10 @@ int32_t	main(int argc, char **argv)
 	orthographic = create_orthographic_matrix(data->o);
 	ortho_project(data, orthographic);
 
-	print_arr(data, 'x');
-	printf("\n");
-	print_arr(data, 'y');
-	printf("\n");
+//	print_arr(data, 'x');
+//	printf("\n");
+//	print_arr(data, 'y');
+//	printf("\n");
 		
 //	print_arr(data, 'c');
 //	printf("\n");
@@ -215,10 +215,13 @@ int32_t	main(int argc, char **argv)
 	// Function to scale in view space
 	scale_view(data);
 	
-	// Recenter after scale operation.
+	// Recenter after scale operation
 	offset_view(data);
 
-	// init data for line drawing/
+	// Init gradient data for line drawing
+	init_gradient_data(data);
+
+	// init data for line drawing
 	init_line_data(data);
 
 	// Draw the actual model

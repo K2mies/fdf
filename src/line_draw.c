@@ -6,17 +6,18 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:55:14 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 16:44:41 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:06:08 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-#define R(a) (((a) >> 24) & 0xFF)
-#define G(a) (((a) >> 16) & 0xFF)
-#define B(a) (((a) >> 8) & 0xFF)
-#define RGB(r, g, b) (((r) << 24) | ((g) >> 16) | ((b) >> 8))
+//#define R(a) (((a) >> 24) & 0xFF)
+//#define G(a) (((a) >> 16) & 0xFF)
+//#define B(a) (((a) >> 8) & 0xFF)
+//#define RGB(r, g, b) (((r) << 24) | ((g) >> 16) | ((b) >> 8))
 
+//// Origonal Function to use with macros (broken)
 //int	gradient(int startcolor, int endcolor, int len, int pix)
 //{
 //	double increment[3];
@@ -36,36 +37,91 @@
 //	return (newcolor);
 //}
 
-int gradient(int startcolor, int endcolor, int len, int pix)
+// Gradient refactoring using gdata
+int gradient(t_data *d, int start_color, int end_color, int len, int pix)
 {
+//    int start_r;
+//    int start_g;
+//    int start_b;
+//    int end_r;
+//    int end_g;
+//	int	end_b;
+
+    d->gd->start_r = extract_channel(start_color, 24);
+    d->gd->start_g = extract_channel(start_color, 16);
+    d->gd->start_b = extract_channel(start_color, 8);
+    d->gd->end_r = extract_channel(end_color, 24);
+    d->gd->end_g = extract_channel(end_color, 16);
+	d->gd->end_b = extract_channel(end_color, 8);
     if (len == 0)
-        return startcolor;
-
-    int start_r = R(startcolor), start_g = G(startcolor), start_b = B(startcolor);
-    int end_r = R(endcolor), end_g = G(endcolor), end_b = B(endcolor);
-
-//  printf("Start color: 0x%08X (R:%d, G:%d, B:%d)\n", startcolor, start_r, start_g, start_b);
-//  printf("End color: 0x%08X (R:%d, G:%d, B:%d)\n", endcolor, end_r, end_g, end_b);
-
-    double r = start_r + (end_r - start_r) * (double)pix / len;
-    double g = start_g + (end_g - start_g) * (double)pix / len;
-    double b = start_b + (end_b - start_b) * (double)pix / len;
-
-//	ft_printf("pix / len = %d\n", pix / len);
-//	(void)pix;
-//  double r = start_r + (end_r - start_r) * (double)0.3;
-//  double g = start_g + (end_g - start_g) * (double)0.3;
-//  double b = start_b + (end_b - start_b) * (double)0.3;
-
-    int result_r = clamp((int)r, 0, 255);
-    int result_g = clamp((int)g, 0, 255);
-    int result_b = clamp((int)b, 0, 255);
-
-    int result = (result_r << 24) + (result_g << 16) + (result_b << 8) + (255);
-//  printf("Gradient result: 0x%08X (R:%d, G:%d, B:%d)\n", result, result_r, result_g, result_b);
-
-    return result;
+        return start_color;
+    d->gd->start_r = d->gd->start_r + (d->gd->end_r - d->gd->start_r) * pix / len;
+    d->gd->start_g = d->gd->start_g + (d->gd->end_g - d->gd->start_g) * pix / len;
+	d->gd->start_b = d->gd->start_b + (d->gd->end_b - d->gd->start_b) * pix / len;
+    d->gd->start_r = clamp(d->gd->start_r, 0, 255);
+    d->gd->start_g = clamp(d->gd->start_g, 0, 255);
+    d->gd->start_b = clamp(d->gd->start_b, 0, 255);
+    return (d->gd->start_r << 24) | (d->gd->start_g << 16) | (d->gd->start_b << 8) | d->gd->alpha;
 }
+
+//// Gradient refactor before using gradient data.
+//int gradient(int start_color, int end_color, int len, int pix, int alphia)
+//{
+//    int start_r;
+//    int start_g;
+//    int start_b;
+//    int end_r;
+//    int end_g;
+//	int	end_b;
+//
+//    start_r = extract_channel(start_color, 24);
+//    start_g = extract_channel(start_color, 16);
+//    start_b = extract_channel(start_color, 8);
+//    end_r = extract_channel(end_color, 24);
+//    end_g = extract_channel(end_color, 16);
+//	end_b = extract_channel(end_color, 8);
+//    if (len == 0)
+//        return start_color;
+//    start_r = start_r + (end_r - start_r) * pix / len;
+//    start_g = start_g + (end_g - start_g) * pix / len;
+//	start_b = start_b + (end_b - start_b) * pix / len;
+//    start_r = clamp(start_r, 0, 255);
+//    start_g = clamp(start_g, 0, 255);
+//    start_b = clamp(start_b, 0, 255);
+//    return (start_r << 24) | (start_g << 16) | (start_b << 8) | alpha;
+//}
+
+//// Function to draw gradient to the screen (before Refactoring)
+//int gradient(int startcolor, int endcolor, int len, int pix)
+//{
+//    if (len == 0)
+//        return startcolor;
+//
+//    int start_r = R(startcolor), start_g = G(startcolor), start_b = B(startcolor);
+//    int end_r = R(endcolor), end_g = G(endcolor), end_b = B(endcolor);
+//
+////  printf("Start color: 0x%08X (R:%d, G:%d, B:%d)\n", startcolor, start_r, start_g, start_b);
+////  printf("End color: 0x%08X (R:%d, G:%d, B:%d)\n", endcolor, end_r, end_g, end_b);
+//
+//    double r = start_r + (end_r - start_r) * (double)pix / len;
+//    double g = start_g + (end_g - start_g) * (double)pix / len;
+//    double b = start_b + (end_b - start_b) * (double)pix / len;
+//
+////	ft_printf("pix / len = %d\n", pix / len);
+////	(void)pix;
+////  double r = start_r + (end_r - start_r) * (double)0.3;
+////  double g = start_g + (end_g - start_g) * (double)0.3;
+////  double b = start_b + (end_b - start_b) * (double)0.3;
+//
+//    int result_r = clamp((int)r, 0, 255);
+//    int result_g = clamp((int)g, 0, 255);
+//    int result_b = clamp((int)b, 0, 255);
+//
+//    int result = (result_r << 24) + (result_g << 16) + (result_b << 8) + (255);
+////  printf("Gradient result: 0x%08X (R:%d, G:%d, B:%d)\n", result, result_r, result_g, result_b);
+//
+//    return result;
+//}
 
 
 //REFACTORED LINE DRAW FUNCTION, BROKEN INTO TWO PARTS
@@ -101,7 +157,7 @@ void	draw_line(t_data *data, t_vec2 p0, t_vec2 p1)
 	{
 		if (is_valid(data, data->ld->x0, data->ld->y0, data->ld->x1, data->ld->y1))
 		{
-			data->ld->color = gradient(p0.rgba, p1.rgba, data->ld->len, data->ld->pix);
+			data->ld->color = gradient(data, p0.rgba, p1.rgba, data->ld->len, data->ld->pix);
 			mlx_put_pixel(data->img, data->ld->x0, data->ld->y0, data->ld->color);
 		}
 		if (data->ld->x0 == data->ld->x1 && data->ld->y0 == data->ld->y1)
