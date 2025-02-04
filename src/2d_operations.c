@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 12:15:24 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:51:55 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,4 @@ void	get_max_and_min(t_data *data)
 				data->y_min = data->p2d[i][j].y;
 		}
 	}
-//	data->x_min = data->x_max * -1;
-//	data->y_min = data->y_max * -1;
 }

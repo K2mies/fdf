@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:38:47 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:12:55 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ t_matrix	create_perspective_matrix(double fov, double ar,
 void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
 void		multiply_points(t_data *data, t_matrix *matrix);
 void		ortho_project(t_data *data, t_matrix orthographic);
+// Transform operations
+void		orthographic_rotation(t_data *data);
 //Orthograpihc projection---------------------------------------------
 void		ortho_projection(t_data *data);
 // Line draw--------------------------------------------------------

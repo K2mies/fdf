@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:19:50 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:32:19 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:10:57 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 void	mlx_start(t_data *data)
 {
 	mlx_set_setting(MLX_MAXIMIZED, true);
-	if (!(data->mlx = mlx_init(WIDTH, HEIGHT, "FDF", true)))
+	data->mlx = mlx_init(WIDTH, HEIGHT, "FDF", true);
+	if (!data->mlx)
 		ft_error();
 	mlx_get_monitor_size(0, &data->width, &data->height);
 	data->img = mlx_new_image(data->mlx, data->width, data->height);
@@ -27,8 +28,9 @@ void	mlx_start(t_data *data)
 // Function keyhook for escaping the program
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
-	t_data *data = (t_data *)param;
-	// If we PRESS the 'ESCAPE' key, print "Hello".
+	t_data	*data;
+
+	data = (t_data *)param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 	{
 		ft_printf("test = %d\n", data->width);

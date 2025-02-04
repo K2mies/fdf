@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 11:33:15 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:06:24 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	parse_points(char **argv, t_data *data)
 	parse_xy_points(data);
 	parse_z_points(data, split, split2);
 	reset_parse(argv, data, split, split2);
-	//used to reset variables for each parse.
 	parse_rgba_points(data, split, split2);
-	//for parsing the rgba values use ft_atoi_base(char *str, int base)
-	//in order to convert the number to an unsigned int.
 	close(data->fd);
 	return (1);
 }
@@ -85,10 +82,10 @@ int	parse_z_points(t_data *data, char **split, char **split2)
 			if (ft_strchr(split[j], ','))
 			{
 				split2 = ft_split(split[j], ',');
-				data->points[i][j].z = (double)ft_atoi(split2[0]); //* 0.1;
+				data->points[i][j].z = (double)ft_atoi(split2[0]);
 				free_arr(split2);
 			}
-			data->points[i][j].z = (double)ft_atoi(split[j]); // * 0.1;
+			data->points[i][j].z = (double)ft_atoi(split[j]);
 		}
 		free(data->line);
 		free_arr(split);

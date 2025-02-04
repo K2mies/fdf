@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:30:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:46:48 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:11:52 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	ortho_projection(t_data *data)
 {
 	t_matrix	orthographic;
-	
+
 	data->o->left = -50.0f;
 	data->o->right = 50.0f;
 	data->o->bottom = -50.0f;
