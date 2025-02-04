@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/04 13:53:08 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/04 13:43:26 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ $(OBJ_DIR):
 
 clean:
 		@rm -rf $(OBJ_DIR)
+		@rm -rf $(LIBMLX)/build
 		@make clean -C ./lib/libft
 		@make clean -C ./lib/MLX42/build
 
