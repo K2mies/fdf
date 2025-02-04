@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 10:50:15 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:19:36 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,10 @@ t_data		*init_data();
 void		init_gradient_data(t_data *data);
 void		init_line_data(t_data *data);
 void		init_ortho_data(t_data *data);
-void		init_3d_points(t_data *data);
-void		init_2d_points(t_data *data);
-void		memset_points(t_data *data);
+// Init array--------------------------------------------------------------------------
+void	init_3d_points(t_data *data);
+void	init_2d_points(t_data *data);
+void	memset_points(t_data *data);
 // Matrix operations-------------------------------------------------------------------
 t_matrix	create_empty_matrix(void);
 t_matrix	create_identity_matrix(void);

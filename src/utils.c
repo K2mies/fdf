@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 10:47:49 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:33:50 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ double	deg_to_rad(double degrees)
 }
 
 // Function to get the len of an array
-int		arr_len(char **arr)
+int	arr_len(char **arr)
 {
 	int		i;
 

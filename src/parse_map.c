@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/03 15:26:16 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:33:15 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,22 @@ int	parse_points(char **argv, t_data *data)
 // Function to parse x and y coordinates to array
 int	parse_xy_points(t_data *data)
 {
-	double	center_x = data->cols / 2.0;
-	double	center_y = data->rows / 2.0;
-	int	i;
-	int	j;
+	double	center_x;
+	double	center_y;
+	int		i;
+	int		j;
 
-	i = 0;
-	j = 0;
-	while (i < data->rows)
+	center_x = data->cols / 2.0;
+	center_y = data->rows / 2.0;
+	i = -1;
+	while (++i < data->rows)
 	{
-		j = 0;
-		while (j < data->cols)
+		j = -1;
+		while (++j < data->cols)
 		{
 			data->points[i][j].y = ((double)i - center_y);
 			data->points[i][j].x = ((double)j - center_x);
-			j++;
 		}
-		i++;
 	}
 	return (1);
 }
@@ -77,7 +76,6 @@ int	parse_z_points(t_data *data, char **split, char **split2)
 	int		j;
 
 	i = -1;
-	j = -1;
 	while (data->line && ++i < data->rows)
 	{
 		split = ft_split(data->line, ' ');
@@ -106,7 +104,6 @@ int	parse_rgba_points(t_data *data, char **split, char **split2)
 	int		j;
 
 	i = -1;
-	j = -1;
 	while (data->line && ++i < data->rows)
 	{
 		split = ft_split(data->line, ' ');
