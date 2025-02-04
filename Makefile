@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/04 14:10:00 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/04 14:39:39 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ fclean: clean
 		@rm -rf $(LIBMLX)
 		@echo "$(CYAN)fdf executable files cleaned!$(DEF_COLOR)"
 		@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+		@echo "$(CYAN)mlx executable files cleaned!$(DEF_COLOR)"
 
 re: fclean all
 		@echo "$(GREEN)Cleaned and rebuilt everything for fdf!$(DEF_COLOR)"
