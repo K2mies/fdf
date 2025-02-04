@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:31:10 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 12:01:52 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:09:14 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,18 @@ int	calculate_pixel_length(int x1, int y1, int x2, int y2)
 }
 
 // Function to check that line is drawn within bounds of the img buffer
-int	is_valid(t_data *data, int x0, int y0, int x1, int y1)
+int	is_valid(t_data *data)
 {
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+
+	x0 = data->ld->x0;
+	y0 = data->ld->y0;
+	x1 = data->ld->y0;
+	y1 = data->ld->y1;
+
 	if (!((x0 > 0 && x0 < data->width) && (y0 > 0 && y0 < data->height)))
 		return (0);
 	if (!((x1 > 0 && x1 < data->width) && (y1 > 0 && y1 < data->height)))

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:55:14 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 12:04:18 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:08:48 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,7 @@ void	draw_line(t_data *data, t_vec2 p0, t_vec2 p1)
 	put_line_data(data, p0, p1);
 	while (1)
 	{
-		if (is_valid(data, data->ld->x0, data->ld->y0,
-				data->ld->x1, data->ld->y1))
+		if (is_valid(data))
 		{
 			data->ld->color = gradient(data, p0.rgba, p1.rgba);
 			mlx_put_pixel(data->img, data->ld->x0,

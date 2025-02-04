@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 11:19:36 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:08:18 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,6 @@ void		ft_error(void);
 // Line draw utils--------------------------------------------------------------------
 int			clamp(int value, int min, int max);
 int			calculate_pixel_length(int x1, int y1, int x2, int y2);
-int			is_valid(t_data *data, int x0, int y0, int x1, int y1);
+int			is_valid(t_data *data);
 int			extract_channel(int color, int shift);
 #endif
