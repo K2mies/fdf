@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/05 12:10:19 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/05 12:13:31 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ LIBFT	= 	./lib/libft/libft.a
 HEADERS = 	-I ./include -I $(LIBMLX)/include
 LIBS	= 	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 #-----------------------------------------------------------------------------------
-#SRCS	= $(shell find $(SRC_DIR) -iname "*.c")
 SRCS	=	src/fdf.c \
 			src/mlx.c \
 			src/utils.c \
@@ -50,7 +49,7 @@ SRCS	=	src/fdf.c \
 			src/line_draw.c \
 			src/2d_operations.c \
 			src/draw_operations.c
-
+#-----------------------------------------------------------------------------------
 BSRCS	=	src_bonus/fdf.c \
 			src_bonus/mlx.c \
 			src_bonus/utils.c \
@@ -68,17 +67,16 @@ BSRCS	=	src_bonus/fdf.c \
 			src_bonus/line_draw.c \
 			src_bonus/2d_operations.c \
 			src_bonus/draw_operations.c
-
-#OBJS	= ${SRCS:.c=.o}
+#------------------------------------------------------------------------------------
 OBJS 		= 	$(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 BOBJS		=	$(patsubst $(BSRC_DIR)%.c,$(BOBJ_DIR)%.o,$(BSRCS))
-
+#------------------------------------------------------------------------------------
 INC			= 	include/
 SRC_DIR 	= 	src/
 OBJ_DIR 	= 	obj/
 BSRC_DIR	=	src_bonus/
 BOBJ_DIR	=	bonus_obj/
-
+#------------------------------------------------------------------------------------
 start:
 		make all
 
