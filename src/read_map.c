@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:30 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:09:58 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:03:25 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -173,15 +173,15 @@ int	print_arr(t_data *data, char flag)
 		while (++j < data->cols)
 		{
 			if (flag == 'x')
-				ft_printf("%.1f ", data->points[i][j].x);
+				printf("%.1f ", data->points[i][j].x);
 			if (flag == 'y')
-				ft_printf("%.1f ", data->points[i][j].y);
+				printf("%.1f ", data->points[i][j].y);
 			if (flag == 'z')
-				ft_printf("%.1f ", data->points[i][j].z);
+				printf("%.1f ", data->points[i][j].z);
 			if (flag == 'w')
-				ft_printf("%.1f ", data->points[i][j].w);
+				printf("%.1f ", data->points[i][j].w);
 			if (flag == 'c')
-				ft_printf("%X ", data->points[i][j].rgba);
+				printf("%X ", data->points[i][j].rgba);
 		}
 		printf("\n");
 	}

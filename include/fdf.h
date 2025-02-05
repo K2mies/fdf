@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:55:24 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:03:33 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ typedef struct s_ortho_data
 	double		far;
 }	t_ortho_data;
 
+// Define a perspective data struct
+typedef struct s_perspective_data
+{
+	double		fov;
+	double		ar;
+	double		n;
+	double		f;
+}	t_perspective_data;
+
 //Define a line data struct
 typedef struct s_line_data
 {
@@ -100,25 +109,26 @@ typedef struct s_gradient_data
 // Define a global data structure
 typedef struct s_data
 {
-	int				width;
-	int				height;
-	double			x_max;
-	double			y_max;
-	double			x_min;
-	double			y_min;
-	int				len;
-	int				rows;
-	int				cols;
-	int				fd;
-	char			*line;
-	char			**split;
-	mlx_image_t		*img;
-	mlx_t			*mlx;
-	t_vec4			**points;
-	t_vec2			**p2d;
-	t_ortho_data	*o;
-	t_line_data		*ld;
-	t_gradient_data	*gd;
+	int					width;
+	int					height;
+	double				x_max;
+	double				y_max;
+	double				x_min;
+	double				y_min;
+	int					len;
+	int					rows;
+	int					cols;
+	int					fd;
+	char				*line;
+	char				**split;
+	mlx_image_t			*img;
+	mlx_t				*mlx;
+	t_vec4				**points;
+	t_vec2				**p2d;
+	t_ortho_data		*o;
+	t_perspective_data	*p;
+	t_line_data			*ld;
+	t_gradient_data		*gd;
 }	t_data;
 
 // Read map functions---------------------------------------------------
@@ -156,8 +166,6 @@ t_matrix	create_rotation_z_matrix(double angle);
 t_matrix	create_translation_matrix(double tx, double ty, double tz);
 // Matrix projection---------------------------------------------------
 t_matrix	create_orthographic_matrix(t_ortho_data *o);
-t_matrix	create_perspective_matrix(double fov, double ar,
-				double n, double f);
 void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
 void		multiply_points(t_data *data, t_matrix *matrix);
 void		ortho_project(t_data *data, t_matrix orthographic);
@@ -165,6 +173,14 @@ void		ortho_project(t_data *data, t_matrix orthographic);
 void		orthographic_rotation(t_data *data);
 //Orthograpihc projection---------------------------------------------
 void		ortho_projection(t_data *data);
+//Perspective projection---------------------------------------------
+void		init_perspective_data(t_data *data);
+void		perspective_projection(t_data *d);
+t_matrix	create_perspective_matrix(double fov, double ar,
+				double n, double f);
+void		perspective_project(t_data *data, t_matrix perspective);
+void		perspective_project_3d_to_2d(t_vec4 v, t_matrix m,
+				t_vec2 *res);
 // Line draw--------------------------------------------------------
 void		draw_line(t_data *data, t_vec2 p0, t_vec2 p1);
 // Draw operations--------------------------------------------------

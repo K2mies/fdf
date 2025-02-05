@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:36:36 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:03:23 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_data	*init_all(int argc, char **argv)
 	init_2d_points(data);
 	memset_points(data);
 	init_ortho_data(data);
+	init_perspective_data(data);
 	init_line_data(data);
 	init_gradient_data(data);
 	return (data);
