@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:22:59 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 15:01:37 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:31:38 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	p_keyhook(void *param)
 //			center_view(data);
 			get_max_and_min(data);
 			scale_view(data);
-			scale_view(data);
+//			scale_view(data);
 			offset_view(data);
 			draw(data);
 
@@ -73,4 +73,35 @@ void	p_keyhook(void *param)
 	}
 }
 
-
+// Function keyhook for rotation transformations.
+void	r_keyhook(void *param)
+{
+	t_data	*data;
+	
+	data = (t_data *)param;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_X))
+	{
+		t_matrix	rot_x;
+		rot_x = create_rotation_x_matrix(deg_to_rad(15));
+		multiply_points(data, &rot_x);
+		ortho_projection(data);
+		color_fill(data);
+		get_max_and_min(data);
+		scale_view(data);
+		offset_view(data);
+		draw(data);
+//		center_view(data);
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_Z))
+	{
+		t_matrix	rot_z;
+		rot_z = create_rotation_z_matrix(deg_to_rad(15));
+		multiply_points(data, &rot_z);
+		ortho_projection(data);
+		color_fill(data);
+		get_max_and_min(data);
+		scale_view(data);
+		offset_view(data);
+		draw(data);
+	}
+}

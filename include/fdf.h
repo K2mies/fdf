@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 14:14:14 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:25:15 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ void		esc_keyhook(void *param);
 // Keyhooks-------------------------------------------------------
 void		esc_keyhook(void *param);
 void		p_keyhook(void *param);
+void		r_keyhook(void *param);
 // Error-----------------------------------------------------------
 void		ft_error(void);
 bool		validate_map(int argc, char **argv);

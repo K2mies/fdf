@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 14:14:07 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:25:19 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -130,6 +130,7 @@ int32_t	main(int argc, char **argv)
 //	mlx_key_hook(data->mlx, &my_keyhook, data);
 	mlx_loop_hook(data->mlx, &esc_keyhook, data);
 	mlx_loop_hook(data->mlx, &p_keyhook, data);
+	mlx_loop_hook(data->mlx, &r_keyhook, data);
 	
 
 	mlx_loop(data->mlx);
