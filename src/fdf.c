@@ -6,41 +6,10 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/05 17:03:31 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:14:07 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
-
-// Function to get the max 3D value to use as a offset
-double	get_3D_max(t_data *data)
-{
-	int	i;
-	int	j;
-
-	double	max_x;
-	double	max_y;
-	double	max_z;
-
-	max_x = data->points[0][0].x;
-	max_y = data->points[0][0].y;
-	max_z = data->points[0][0].z;
-
-	i = -1;
-	while (++i < data->rows)
-	{
-		j = -1;
-		while (++j < data->cols)
-		{
-			if (max_x < data->points[i][j].x)
-				max_x = data->points[i][j].x;
-			if (max_y < data->points[i][j].y)
-				max_y = data->points[i][j].y;		
-			if (max_z < data->points[i][j].z)
-				max_z = data->points[i][j].z;		
-		}
-	}
-	return(max_x * max_y * max_z);
-}
 
 int32_t	main(int argc, char **argv)
 {
@@ -78,11 +47,11 @@ int32_t	main(int argc, char **argv)
 	parse_points(argv, data);
 
 	// Print the parsed maps
-	print_arr(data, 'x');
-	printf("\n");
-	print_arr(data, 'y');
-	printf("\n");
-	print_arr(data, 'z');
+//	print_arr(data, 'x');
+//	printf("\n");
+//	print_arr(data, 'y');
+//	printf("\n");
+//	print_arr(data, 'z');
 //	printf("\n");
 //	print_arr(data, 'w');
 //	printf("\n");
@@ -99,65 +68,37 @@ int32_t	main(int argc, char **argv)
 	
 	//init	transform operations here
 //	t_matrix	scale;
-	t_matrix	rot_x;
-	t_matrix	rot_z;
-	t_matrix	translation;
+//	t_matrix	rot_x;
+//	t_matrix	rot_z;
+//	t_matrix	translation;
 
 	//Remember that rotations take radians as arguments, not degree,
 	//(M_PI / 2) = 90degree.
 			
 	// Create transform matricies here
 //	scale		= create_scaling_matrix(1.0, 1.0, 1.0);
-	rot_x		= create_rotation_x_matrix(deg_to_rad(45));
-	rot_z		= create_rotation_z_matrix(deg_to_rad(45));
+//	rot_x		= create_rotation_x_matrix(deg_to_rad(45));
+//	rot_z		= create_rotation_z_matrix(deg_to_rad(45));
 //	translation = create_translation_matrix((data->width / 2.0), (data->height / 2.0), 0);
-	get_max_and_min(data);
+//	get_max_and_min(data);
 
-//// Function to get the max 3D value to use as a offset
-//double	get_3D_max(t_data *data)
-//{
-//	int	i;
-//	int	j;
-//
-//	double	max_x;
-//	double	max_y;
-//	double	max_z;
-//
-//	max_x = data->points[0][0].x;
-//	max_y = data->points[0][0].y;
-//	max_z = data->points[0][0].z;
-//
-//	i = -1;
-//	while (++i < data->rows)
-//	{
-//		j = -1;
-//		while (++j < data->cols)
-//		{
-//			if (max_x < data->points[i][j].x)
-//				max_x = data->points[i][j].x;
-//			if (max_y < data->points[i][j].y)
-//				max_y = data->points[i][j].y;		
-//			if (max_z < data->points[i][j].z)
-//				max_z = data->points[i][j].z;		}
-//	}
-//	return(max_x * max_y * max_z);
-//}
-	translation = create_translation_matrix(0, 0, (get_3D_max(data) / 20.0f));
+	//Get the translation matrix with caculated z depth (for 3D.)
+//	translation = create_translation_matrix(0, 0, (get_3D_max(data) / 20.0f));
 
 
 	// Apply transform operations here (the order matters)
 //	multiply_points(data, &scale);
-	multiply_points(data, &rot_z);
-	multiply_points(data, &rot_x);
-	multiply_points(data, &translation);
+//	multiply_points(data, &rot_z);
+//	multiply_points(data, &rot_x);
+//	multiply_points(data, &translation);
 
 //	orthographic_rotation(data);
 	
 	// ORTHOGRAPHIC PROJECTION
-//	ortho_projection(data);
+	ortho_projection(data);
 
 	// PERSPECTIVE PROJECTION
-	perspective_projection(data);
+//	perspective_projection(data);
 
 //	t_matrix	perspective;
 //	perspective = create_perspective_matrix(60.0, (data->width / data->height), 1.0, 100.0);
@@ -185,7 +126,12 @@ int32_t	main(int argc, char **argv)
 	// Draw the actual model
 	draw(data);
 
-	mlx_key_hook(data->mlx, &my_keyhook, data);
+	//MLX KEYHOOKS
+//	mlx_key_hook(data->mlx, &my_keyhook, data);
+	mlx_loop_hook(data->mlx, &esc_keyhook, data);
+	mlx_loop_hook(data->mlx, &p_keyhook, data);
+	
+
 	mlx_loop(data->mlx);
 	mlx_delete_image(data->mlx, data->img);
 

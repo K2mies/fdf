@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/05 17:03:33 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:14:14 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,11 @@ typedef struct s_data
 	int					fd;
 	char				*line;
 	char				**split;
+	char				flag;
 	mlx_image_t			*img;
 	mlx_t				*mlx;
 	t_vec4				**points;
+	t_vec4				**proj;
 	t_vec2				**p2d;
 	t_ortho_data		*o;
 	t_perspective_data	*p;
@@ -148,7 +150,6 @@ t_data		*init_all(int argc, char **argv);
 t_data		*init_data(void);
 void		init_gradient_data(t_data *data);
 void		init_line_data(t_data *data);
-void		init_ortho_data(t_data *data);
 // Init array----------------------------------------------------------
 void		init_3d_points(t_data *data);
 void		init_2d_points(t_data *data);
@@ -164,15 +165,17 @@ t_matrix	create_rotation_x_matrix(double angle);
 t_matrix	create_rotation_y_matrix(double angle);
 t_matrix	create_rotation_z_matrix(double angle);
 t_matrix	create_translation_matrix(double tx, double ty, double tz);
-// Matrix projection---------------------------------------------------
-t_matrix	create_orthographic_matrix(t_ortho_data *o);
-void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
-void		multiply_points(t_data *data, t_matrix *matrix);
-void		ortho_project(t_data *data, t_matrix orthographic);
 // Transform operations-----------------------------------------------
 void		orthographic_rotation(t_data *data);
+// Matrix projection---------------------------------------------------
+void		multiply_points(t_data *data, t_matrix *matrix);
+void		multiply_projection_points(t_data *data, t_matrix *matrix);
 //Orthograpihc projection---------------------------------------------
 void		ortho_projection(t_data *data);
+void		init_ortho_data(t_data *data);
+t_matrix	create_orthographic_matrix(t_ortho_data *o);
+void		project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res);
+void		ortho_project(t_data *data, t_matrix orthographic);
 //Perspective projection---------------------------------------------
 void		init_perspective_data(t_data *data);
 void		perspective_projection(t_data *d);
@@ -181,6 +184,8 @@ t_matrix	create_perspective_matrix(double fov, double ar,
 void		perspective_project(t_data *data, t_matrix perspective);
 void		perspective_project_3d_to_2d(t_vec4 v, t_matrix m,
 				t_vec2 *res);
+//3D operations-----------------------------------------------------
+double		get_3D_max(t_data *data);
 // Line draw--------------------------------------------------------
 void		draw_line(t_data *data, t_vec2 p0, t_vec2 p1);
 // Draw operations--------------------------------------------------
@@ -199,7 +204,10 @@ int			arr_len(char **arr);
 void		free_all(t_data *data);
 // Mlx ------------------------------------------------------------
 void		mlx_start(t_data *data);
-void		my_keyhook(mlx_key_data_t keydata, void *param);
+void		esc_keyhook(void *param);
+// Keyhooks-------------------------------------------------------
+void		esc_keyhook(void *param);
+void		p_keyhook(void *param);
 // Error-----------------------------------------------------------
 void		ft_error(void);
 bool		validate_map(int argc, char **argv);
