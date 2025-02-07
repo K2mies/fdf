@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:22:59 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 15:31:38 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:24:19 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,23 @@ void	p_keyhook(void *param)
 	{
 		if (data->flag == 'o')
 		{
-			t_matrix	translation;
+//			t_matrix	translation;
 			color_fill(data);
-			double	trans_z = (get_3D_max(data) / 20.0f);
-			translation = create_translation_matrix(0, 0, trans_z);
+//			double	trans_z = (get_3D_max(data) / 20.0f);
+//			translation = create_translation_matrix(0, 0, trans_z);
 //			translation = create_translation_matrix(0, 0, (get_3D_max(data) / 20.0f));
-			multiply_points(data, &translation);
+//			multiply_points(data, &translation);
 			perspective_projection(data);
 //			center_view(data);
 			get_max_and_min(data);
 //			center_view(data);
 			scale_view(data);
 			offset_view(data);
-			draw(data);	
-			translation = create_translation_matrix(0, 0, -trans_z);
-			multiply_points(data, &translation);
-			center_view(data);
+			draw(data);
+			//Reseting the 3d translation here so that it does not effect other operations.
+//			translation = create_translation_matrix(0, 0, -trans_z);
+//			multiply_points(data, &translation);
+//			center_view(data);
 //			data->flag = 'p';	
 			ft_printf("Projection set to: perspective\n");	
 		}
@@ -79,27 +80,42 @@ void	r_keyhook(void *param)
 	t_data	*data;
 	
 	data = (t_data *)param;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_X))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_Q))
 	{
 		t_matrix	rot_x;
-		rot_x = create_rotation_x_matrix(deg_to_rad(15));
+		rot_x = create_rotation_x_matrix(deg_to_rad(1));
 		multiply_points(data, &rot_x);
 		ortho_projection(data);
+//		perspective_projection(data);
 		color_fill(data);
-		get_max_and_min(data);
+//		get_max_and_min(data);
 		scale_view(data);
 		offset_view(data);
 		draw(data);
 //		center_view(data);
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_Z))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+	{
+		t_matrix	rot_y;
+		rot_y = create_rotation_y_matrix(deg_to_rad(1));
+		multiply_points(data, &rot_y);
+		ortho_projection(data);
+//		perspective_projection(data);
+		color_fill(data);
+//		get_max_and_min(data);
+		scale_view(data);
+		offset_view(data);
+		draw(data);
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_E))
 	{
 		t_matrix	rot_z;
-		rot_z = create_rotation_z_matrix(deg_to_rad(15));
+		rot_z = create_rotation_z_matrix(deg_to_rad(1));
 		multiply_points(data, &rot_z);
 		ortho_projection(data);
+//		perspective_projection(data);
 		color_fill(data);
-		get_max_and_min(data);
+//		get_max_and_min(data);
 		scale_view(data);
 		offset_view(data);
 		draw(data);

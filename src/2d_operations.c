@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 13:14:12 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:46:16 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ void	scale_view(t_data *data)
 
 	scale_x = 0;
 	scale_y = 0;
-	scale_x = 0.6 * data->width / (data->x_max - data->x_min);
+//	scale_x = 0.6 * data->width / (data->x_max - data->x_min);
+//	scale_y = 0.6 * data->width / (data->x_max - data->x_min);
+	scale_x = 0.6 * data->height / (data->x_max - data->x_min);
 	scale_y = 0.6 * data->height / (data->y_max - data->y_min);
+	printf("scale_x = %.1f\n", scale_x);
+	printf("scale_y = %.1f\n", scale_y);
 	i = -1;
 	while (++i < data->rows)
 	{
@@ -97,15 +101,18 @@ void	get_max_and_min(t_data *data)
 		while (++j < data->cols)
 		{
 			if (data->p2d[i][j].x > data->x_max)
+			{
 				data->x_max = data->p2d[i][j].x;
-			if (data->p2d[i][j].y > data->y_max)
-				data->y_max = data->p2d[i][j].y;
-			if (data->p2d[i][j].x < data->x_min)
-				data->x_min = data->p2d[i][j].x;
-			if (data->p2d[i][j].y < data->y_min)
-				data->y_min = data->p2d[i][j].y;
+				data->y_max = data->x_max;
+			}
+//			if (data->p2d[i][j].y > data->y_max)
+//				data->y_max = data->p2d[i][j].y;
+			//if (data->p2d[i][j].x < data->x_min)
+			//	data->x_min = data->p2d[i][j].x;
+			//if (data->p2d[i][j].y < data->y_min)
+			//	data->y_min = data->p2d[i][j].y;
 		}
 	}
-//	data->x_min = data->x_max * -1;
-//	data->y_min = data->y_max * -1;
+	data->x_min = data->x_max * -1;
+	data->y_min = data->y_max * -1;
 }
