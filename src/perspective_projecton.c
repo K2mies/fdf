@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:53:31 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 13:31:34 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:30:21 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ void	perspective_projection(t_data *d)
 	t_matrix	translation; 
 	double	trans_z;
 	
-	trans_z = (get_3D_max(d) / 20.0f);
-//	trans_z = 100.0f;
+//	trans_z = (get_3D_max(d) / 20.0f);
+//	trans_z = 20.0f;
+	trans_z = data->trans;
 	printf("trans_z = %.1f\n", trans_z);
+
+	printf("1: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
 	translation = create_translation_matrix(0, 0, trans_z);
 	multiply_points(d, &translation);
+	printf("2: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
 
 	d->p->fov = 60.0f;
 	d->p->ar = (d->width / d->height);
@@ -38,6 +42,7 @@ void	perspective_projection(t_data *d)
 
 	translation = create_translation_matrix(0, 0, -trans_z);
 	multiply_points(d, &translation);
+	printf("3: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
 	d->flag = 'p';
 }
 
@@ -126,33 +131,33 @@ void	perspective_project_3d_to_2d(t_vec4 v, t_matrix m, t_vec2 *res)
 //
 //	res->y = -res->y;
 
-	//v4.0
-	t_vec4 clip_coords;
-    clip_coords.x = m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3] * v.w;
-    clip_coords.y = m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3] * v.w;
-    clip_coords.z = m.m[2][0] * v.x + m.m[2][1] * v.y + m.m[2][2] * v.z + m.m[2][3] * v.w;
-    clip_coords.w = m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3] * v.w;
-	
-	// Perspective divide
-    if (clip_coords.w != 0)
-    {
-        res->x = clip_coords.x / clip_coords.w;
-        res->y = clip_coords.y / clip_coords.w;
-    }
-    else
-    {
-        res->x = clip_coords.x;
-        res->y = clip_coords.y;
-    }
+//	//v4.0
+//	t_vec4 clip_coords;
+//    clip_coords.x = m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3] * v.w;
+//    clip_coords.y = m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3] * v.w;
+//    clip_coords.z = m.m[2][0] * v.x + m.m[2][1] * v.y + m.m[2][2] * v.z + m.m[2][3] * v.w;
+//    clip_coords.w = m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3] * v.w;
+//	
+//	// Perspective divide
+//    if (clip_coords.w != 0)
+//    {
+//        res->x = clip_coords.x / clip_coords.w;
+//        res->y = clip_coords.y / clip_coords.w;
+//    }
+//    else
+//    {
+//        res->x = clip_coords.x;
+//        res->y = clip_coords.y;
+//    }
 
-//	//v1.0
-//	double	w;
-//		 w =  m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3];
-//	res->x = (m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3]) / w;
-//	res->y = (m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3]) / w;
-	res->rgba = v.rgba;
-//	res->y = -res->y;
-//	res->x = -res->x;
+	//v1.0
+	double	w;
+		 w =  m.m[3][0] * v.x + m.m[3][1] * v.y + m.m[3][2] * v.z + m.m[3][3];
+	res->x = (m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3]) / w;
+	res->y = (m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z + m.m[1][3]) / w;
+  	res->rgba = v.rgba;
+	res->y = -res->y;
+	res->x = -res->x;
 
 }
 

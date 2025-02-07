@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:43 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 12:18:42 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:25:46 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ double	get_3D_max(t_data *data)
 				max_z = data->points[i][j].z;		
 		}
 	}
+//	return (max_x * max_y);
 	return(max_x * max_y * max_z);
 }

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 12:28:57 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:39:40 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_data	*init_all(int argc, char **argv)
 	get_row_count(argv, data);
 	get_col_count(argv, data);
 	init_3d_points(data);
+	init_proj_points(data);
 	init_2d_points(data);
 	memset_points(data);
 	init_ortho_data(data);

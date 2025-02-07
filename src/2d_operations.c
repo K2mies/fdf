@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 13:46:16 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:09:10 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	scale_view(t_data *data)
 	scale_y = 0;
 //	scale_x = 0.6 * data->width / (data->x_max - data->x_min);
 //	scale_y = 0.6 * data->width / (data->x_max - data->x_min);
-	scale_x = 0.6 * data->height / (data->x_max - data->x_min);
-	scale_y = 0.6 * data->height / (data->y_max - data->y_min);
+	scale_x = 0.5 * data->height / (data->x_max - data->x_min);
+	scale_y = 0.5 * data->height / (data->y_max - data->y_min);
 	printf("scale_x = %.1f\n", scale_x);
 	printf("scale_y = %.1f\n", scale_y);
 	i = -1;
@@ -93,6 +93,8 @@ void	get_max_and_min(t_data *data)
 {
 	int		i;
 	int		j;
+
+	data->x_max = 0;
 
 	i = -1;
 	while (++i < data->rows)

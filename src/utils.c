@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/05 15:54:39 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:47:42 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	free_point_arr(t_data *data)
 	while (++i < data->rows)
 	{
 		free(data->points[i]);
+		free(data->proj[i]);
 		free(data->p2d[i]);
 	}
 	free(data->points);
+	free(data->proj);
 	free(data->p2d);
 }
 

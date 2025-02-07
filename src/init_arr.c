@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:14:54 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 11:24:48 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:42:41 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,46 @@ void	init_3d_points(t_data *data)
 			exit(1);
 		}
 	}
+}
+
+// Function to init projection arr
+void	init_proj_points(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	data->proj = malloc(sizeof(t_vec4 *) * data->rows);
+	if (!data->proj)
+		ft_printf("point failure\n");
+	while (++i < data->rows)
+	{
+		data->proj[i] = calloc(data->cols, sizeof(t_vec4));
+		if (!data->points[i])
+		{
+			while (i--)
+				free(data->proj[i]);
+			free(data->proj);
+			ft_printf("data points free'd");
+			exit(1);
+		}
+	}
+}
+// Function to copy contents of one array to another
+void	copy_arr_data(t_data *data, t_vec4 **dest, t_vec4 **src)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < data->rows)
+	{
+		j = -1;
+		while (++j < data->cols)
+		{
+			dest[i][j] = src[i][j];
+		}
+	}
+
 }
 
 // Function to init 2d point array

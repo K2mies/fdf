@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/06 16:19:32 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:30:23 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct s_data
 	double				y_max;
 	double				x_min;
 	double				y_min;
+	double				trans;
 	int					len;
 	int					rows;
 	int					cols;
@@ -151,6 +152,8 @@ t_data		*init_data(void);
 void		init_gradient_data(t_data *data);
 void		init_line_data(t_data *data);
 // Init array----------------------------------------------------------
+void		copy_arr_data(t_data *data, t_vec4 **dest, t_vec4 **src);
+void		init_proj_points(t_data *data);
 void		init_3d_points(t_data *data);
 void		init_2d_points(t_data *data);
 void		memset_points(t_data *data);

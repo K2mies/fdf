@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 14:20:22 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:30:19 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -99,7 +99,6 @@ int32_t	main(int argc, char **argv)
 
 	// PERSPECTIVE PROJECTION
 //	perspective_projection(data);
-
 //	t_matrix	perspective;
 //	perspective = create_perspective_matrix(60.0, (data->width / data->height), 1.0, 100.0);
 //	perspective = create_perspective_matrix(40.0, (data->width / data->height), 0.1, 100.0);

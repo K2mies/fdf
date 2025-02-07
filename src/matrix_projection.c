@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:18:31 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 13:31:23 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:19:17 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	multiply_projection_points(t_data *data, t_matrix *matrix)
 	int	i;
 	int	j;
 
-	data->proj = data->points;
+	copy_arr_data(data, data->proj, data->points);
 
 	i = -1;
 	while (++i < data->rows)
@@ -46,8 +46,8 @@ void	multiply_projection_points(t_data *data, t_matrix *matrix)
 		j = -1;
 		while(++j < data->cols)
 		{
-			data->proj[i][j] = matrix_multiply_vector(*matrix, data->points[i][j]);
-//			data->proj[i][j] = matrix_multiply_vector(*matrix, data->proj[i][j]);
+//			data->proj[i][j] = matrix_multiply_vector(*matrix, data->points[i][j]);
+			data->proj[i][j] = matrix_multiply_vector(*matrix, data->proj[i][j]);
 		}
 	}
 }
