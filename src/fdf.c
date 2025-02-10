@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 17:30:19 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:22:41 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -47,10 +47,10 @@ int32_t	main(int argc, char **argv)
 	parse_points(argv, data);
 
 	// Print the parsed maps
-	print_arr(data, 'x');
-	printf("\n");
-	print_arr(data, 'y');
-	printf("\n");
+//	print_arr(data, 'x');
+//	printf("\n");
+//	print_arr(data, 'y');
+//	printf("\n");
 //	print_arr(data, 'z');
 //	printf("\n");
 //	print_arr(data, 'w');
@@ -113,6 +113,14 @@ int32_t	main(int argc, char **argv)
 	// Function to get the Max and Min values of view space object
 	get_max_and_min(data);
 
+	// set the trans variable for z depth
+//	data->trans = 150.00f + (get_3D_max(data) / 10.0f);
+	data->trans_z = 150.00f + (get_3D_max(data) / 30.0f);
+//	data->trans = data->x_max * 100;
+//	data->trans = get_3D_max(data) / 10.0f;
+	// Set the zoom variable default
+//	data->zoom = 0.0;
+
 	//Function to return space to 0 pos (for scale operations()
 //	center_view(data);
 	
@@ -130,6 +138,9 @@ int32_t	main(int argc, char **argv)
 	mlx_loop_hook(data->mlx, &esc_keyhook, data);
 	mlx_loop_hook(data->mlx, &p_keyhook, data);
 	mlx_loop_hook(data->mlx, &r_keyhook, data);
+	mlx_loop_hook(data->mlx, &t_keyhook, data);
+	mlx_loop_hook(data->mlx, &reset_keyhook, data);
+	mlx_scroll_hook(data->mlx, &z_keyhook, data);
 	
 
 	mlx_loop(data->mlx);

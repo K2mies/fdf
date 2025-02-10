@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 11:33:15 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:43:25 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ int	parse_z_points(t_data *data, char **split, char **split2)
 			if (ft_strchr(split[j], ','))
 			{
 				split2 = ft_split(split[j], ',');
-				data->points[i][j].z = (double)ft_atoi(split2[0]); //* 0.1;
+				data->points[i][j].z = (double)ft_atoi(split2[0]);
 				free_arr(split2);
 			}
-			data->points[i][j].z = (double)ft_atoi(split[j]); // * 0.1;
+			data->points[i][j].z = (double)ft_atoi(split[j]);
 		}
 		free(data->line);
 		free_arr(split);

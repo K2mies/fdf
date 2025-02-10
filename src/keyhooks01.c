@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:22:59 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 17:30:17 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:22:47 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,51 +33,17 @@ void	p_keyhook(void *param)
 	{
 		if (data->flag == 'o')
 		{
-//			t_matrix	translation;
-//			color_fill(data);
-//			double	trans_z = (get_3D_max(data) / 20.0f);
-//			translation = create_translation_matrix(0, 0, trans_z);
-//			translation = create_translation_matrix(0, 0, (get_3D_max(data) / 20.0f));
-//			multiply_points(data, &translation);
-//			data->trans = get_3D_max(data) / 20.0f;
-			data->trans = data->x_max * 2;
 			perspective_projection(data);
-//			center_view(data);
-//			get_max_and_min(data);
-//			center_view(data);
-//			scale_view(data);
-//			offset_view(data);
-//			draw(data);
-			//Reseting the 3d translation here so that it does not effect other operations.
-//			translation = create_translation_matrix(0, 0, -trans_z);
-//			multiply_points(data, &translation);
-//			center_view(data);
-//			data->flag = 'p';	
 			ft_printf("Projection set to: perspective\n");	
 		}
 		else if (data->flag == 'p')
 		{
-//			t_matrix	translation;
-//			color_fill(data);
-//			translation = create_translation_matrix(0, 0, -(get_3D_max(data) / 20.0f));
-//			multiply_points(data, &translation);
 			ortho_projection(data);
-//			center_view(data);
-//			get_max_and_min(data);
-//			scale_view(data);
-//			scale_view(data);
-//			offset_view(data);
-//			draw(data);
-
-//			data->flag = 'o';
 			ft_printf("Projection set to: orthographic\n");
 			
 		}
-		color_fill(data);
 		get_max_and_min(data);
-		scale_view(data);
-		offset_view(data);
-		draw(data);
+		redraw(data);
 	}
 }
 
@@ -96,12 +62,7 @@ void	r_keyhook(void *param)
 			ortho_projection(data);
 		else
 			perspective_projection(data);
-		color_fill(data);
-//		get_max_and_min(data);
-		scale_view(data);
-		offset_view(data);
-		draw(data);
-//		center_view(data);
+		redraw(data);
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 	{
@@ -112,11 +73,7 @@ void	r_keyhook(void *param)
 			ortho_projection(data);
 		else
 			perspective_projection(data);
-		color_fill(data);
-//		get_max_and_min(data);
-		scale_view(data);
-		offset_view(data);
-		draw(data);
+		redraw(data);
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_E))
 	{
@@ -127,10 +84,127 @@ void	r_keyhook(void *param)
 			ortho_projection(data);
 		else
 			perspective_projection(data);
-		color_fill(data);
-//		get_max_and_min(data);
-		scale_view(data);
-		offset_view(data);
-		draw(data);
+		redraw(data);
+	}
+}
+
+// Function keyhook for zoom in and out
+
+void	z_keyhook(double xdelta, double ydelta, void *param)
+{
+	t_data	*data;
+
+	(void)xdelta;
+	data = (t_data *)param;
+
+	if (ydelta > 0)
+	{
+		if (data->flag == 'o')
+		{
+			data->zoom += 100.0f;
+			ortho_projection(data);
+		}
+		else
+		{
+			data->zoom += 100.0f;
+			perspective_projection(data);
+		}
+		redraw(data);
+	}
+	if (ydelta < 0)
+	{
+		if (data->flag == 'o')
+		{
+			data->zoom -= 100.0f;
+			ortho_projection(data);
+		}
+		else
+		{
+			data->zoom -= 100.f;
+			perspective_projection(data);
+		}
+		redraw(data);
+	}
+}
+
+void	t_keyhook(void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_EQUAL))
+	{
+		data->trans_z += 10.0f;
+		if (data->flag == 'o')
+			ortho_projection(data);
+		else
+			perspective_projection(data);
+		redraw(data);
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_MINUS))
+	{
+		data->trans_z -= 10.0f;
+		if (data->flag == 'o')
+			ortho_projection(data);
+		else
+			perspective_projection(data);
+		redraw(data);
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_UP))
+	{
+		data->trans_y -= 10.0f;
+		if (data->flag == 'o')
+			ortho_projection(data);
+		else
+			perspective_projection(data);
+		redraw(data);
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN))
+	{
+		data->trans_y += 10.0f;
+		if (data->flag == 'o')
+			ortho_projection(data);
+		else
+			perspective_projection(data);
+		redraw(data);
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+	{
+		data->trans_x -= 10.0f;
+		if (data->flag == 'o')
+			ortho_projection(data);
+		else
+			perspective_projection(data);
+		redraw(data);
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+	{
+		data->trans_x += 10.0f;
+		if (data->flag == 'o')
+			ortho_projection(data);
+		else
+			perspective_projection(data);
+		redraw(data);
+	}
+}
+
+void	reset_keyhook(void *param)
+{
+	t_data *data;
+
+	data = (t_data *)param;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_R))
+	{
+		parse_points(data->argv, data);
+		data->trans_z = 150.00f + (get_3D_max(data) / 10.0f);
+		if (data->flag == 'o')
+			ortho_projection(data);
+		else
+			perspective_projection(data);
+		get_max_and_min(data);
+		data->trans_x = 0;
+		data->trans_y = 0;
+		data->zoom = 0.0;
+		redraw(data);
 	}
 }

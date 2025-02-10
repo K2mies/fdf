@@ -6,11 +6,20 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 17:09:10 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:22:53 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+// Funtion to redraw to screen
+void	redraw(t_data *data)
+{
+	color_fill(data);
+	scale_view(data);
+	offset_view(data);
+	draw(data);
+}
 
 // Function to scale in view Space based on max values / screen.
 void	scale_view(t_data *data)
@@ -20,14 +29,15 @@ void	scale_view(t_data *data)
 	int		i;
 	int		j;
 
+	
 	scale_x = 0;
 	scale_y = 0;
 //	scale_x = 0.6 * data->width / (data->x_max - data->x_min);
 //	scale_y = 0.6 * data->width / (data->x_max - data->x_min);
-	scale_x = 0.5 * data->height / (data->x_max - data->x_min);
-	scale_y = 0.5 * data->height / (data->y_max - data->y_min);
-	printf("scale_x = %.1f\n", scale_x);
-	printf("scale_y = %.1f\n", scale_y);
+	scale_x = 0.6 * data->height / (data->x_max - data->x_min) + data->zoom;
+	scale_y = 0.6 * data->height / (data->y_max - data->y_min) + data->zoom;
+//	printf("scale_x = %.1f\n", scale_x);
+//	printf("scale_y = %.1f\n", scale_y);
 	i = -1;
 	while (++i < data->rows)
 	{
@@ -56,8 +66,8 @@ void	offset_view(t_data *data)
 		j = 0;
 		while (j < data->cols)
 		{
-			data->p2d[i][j].x += c_x;
-			data->p2d[i][j].y += c_y;
+			data->p2d[i][j].x += (c_x + data->trans_x);
+			data->p2d[i][j].y += (c_y + data->trans_y);
 			j++;
 		}
 		i++;
@@ -80,8 +90,8 @@ void	center_view(t_data *data)
 		j = 0;
 		while (j < data->cols)
 		{
-			data->p2d[i][j].x -= c_x;
-			data->p2d[i][j].y -= c_y;
+			data->p2d[i][j].x -= (c_x - data->trans_x);
+			data->p2d[i][j].y -= (c_y - data->trans_y);
 			j++;
 		}
 		i++;

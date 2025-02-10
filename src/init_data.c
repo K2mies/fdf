@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 15:39:40 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:36:39 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_data	*init_all(int argc, char **argv)
 	init_perspective_data(data);
 	init_line_data(data);
 	init_gradient_data(data);
+	data->argv = argv;
+	data->argc = argc;
 	return (data);
 }
 

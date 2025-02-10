@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:53:31 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 17:30:21 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:22:50 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	perspective_projection(t_data *d)
 	
 //	trans_z = (get_3D_max(d) / 20.0f);
 //	trans_z = 20.0f;
-	trans_z = data->trans;
+	trans_z = d->trans_z;
 	printf("trans_z = %.1f\n", trans_z);
 
-	printf("1: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
+//	printf("1: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
 	translation = create_translation_matrix(0, 0, trans_z);
 	multiply_points(d, &translation);
-	printf("2: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
+//	printf("2: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
 
 	d->p->fov = 60.0f;
 	d->p->ar = (d->width / d->height);
@@ -42,7 +42,7 @@ void	perspective_projection(t_data *d)
 
 	translation = create_translation_matrix(0, 0, -trans_z);
 	multiply_points(d, &translation);
-	printf("3: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
+//	printf("3: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
 	d->flag = 'p';
 }
 
