@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 13:19:59 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:48:36 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ int			arr_len(char **arr);
 void		free_all(t_data *data);
 // Mlx ------------------------------------------------------------
 void		mlx_start(t_data *data);
-void		my_keyhook(mlx_key_data_t keydata, void *param);
+void		my_kethook(mlx_key_data_t keydata, void *param);
 // Keyhooks 01------------------------------------------------------
 void		r_keyhook(void *param);
 void		tz_keyhook(void *param);
