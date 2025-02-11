@@ -1,0 +1,5 @@
+len = 100
+rows = 10
+columns = 10
+monitor x = 3840
+monitor y = 2160

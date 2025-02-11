@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:47:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 14:46:03 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:00:01 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -37,8 +37,8 @@ int32_t	main(int argc, char **argv)
 //	init_line_data(data);
 //	init_gradient_data(data);
 
-	t_data	*data;
-	data = init_all(argc, argv);
+	t_data	data;
+	init_all(&data, argc, argv);
 	
 	// Print paramaters for data
 	ft_printf("len = %d\nrows = %d\ncolumns = %d\n", data->len, data->rows, data->cols);
@@ -148,12 +148,12 @@ int32_t	main(int argc, char **argv)
 	mlx_loop(data->mlx);
 	mlx_delete_image(data->mlx, data->img);
 
-	//terminate mlx
-	mlx_terminate(data->mlx);
-
 	// FREE THINGS LEFT OVER.
 	// Function to free all
 	free_all(data);
 
+	//Terminate mlx;
+	mlx_terminate(data->mlx);
+	
 	return (EXIT_SUCCESS);
 }
