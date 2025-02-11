@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:57:59 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 15:08:46 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:20:18 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_error(void)
 bool	validate_map(int argc, char **argv)
 {
 	char	*temp;
-	
-	temp = NULL;	
+
+	temp = NULL;
 	if (argc != 2)
 	{
 		ft_printf("invalid amount of arguments given\n");

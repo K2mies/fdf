@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:30:40 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 17:04:03 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:36:54 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	ortho_projection(t_data *data)
 {
 	t_matrix	orthographic;
-	
+
 	data->o->left = -50.0f;
 	data->o->right = 50.0f;
 	data->o->bottom = -50.0f;
@@ -24,7 +24,6 @@ void	ortho_projection(t_data *data)
 	data->o->near = 0.1f;
 	data->o->far = 100.0f;
 	orthographic = create_orthographic_matrix(data->o);
-//	multiply_projection_points(data, &orthographic);
 	ortho_project(data, orthographic);
 	data->flag = 'o';
 }
@@ -33,11 +32,11 @@ void	ortho_projection(t_data *data)
 void	init_ortho_data(t_data *data)
 {
 	data->o = malloc(sizeof(t_ortho_data));
-//	if (!data->o)
-//	{
-//		perror("Failed to allocate memory for ortho data");
-//		exit(EXIT_FAILURE);
-//	}
+	if (!data->o)
+	{
+		perror("Failed to allocate memory for ortho data");
+		exit(EXIT_FAILURE);
+	}
 	ft_memset(data->o, 0, sizeof(t_ortho_data));
 }
 
@@ -77,10 +76,8 @@ void	ortho_project(t_data *data, t_matrix orthographic)
 		j = -1;
 		while (++j < data->cols)
 		{
-			project_3d_to_2d(data->points[i][j], orthographic, &data->p2d[i][j]);
-			//project_3d_to_2d(data->proj[i][j], orthographic, &data->p2d[i][j]);
+			project_3d_to_2d(data->points[i][j],
+				orthographic, &data->p2d[i][j]);
 		}
 	}
 }
-
-

@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/05 12:13:54 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/11 15:14:55 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,23 +50,28 @@ SRCS	=	src/fdf.c \
 			src/2d_operations.c \
 			src/draw_operations.c
 #-----------------------------------------------------------------------------------
-BSRCS	=	src_bonus/fdf.c \
-			src_bonus/mlx.c \
-			src_bonus/utils.c \
+BSRCS	=	src_bonus/2d_operations.c \
+			src_bonus/3d_operations.c \
+			src_bonus/draw_operations.c \
 			src_bonus/error.c \
-			src_bonus/init_data.c \
+			src_bonus/fdf.c \
 			src_bonus/init_arr.c \
-			src_bonus/read_map.c \
-			src_bonus/parse_map.c \
+			src_bonus/init_data.c \
+			src_bonus/keyhook_functions.c \
+			src_bonus/keyhooks01.c \
+			src_bonus/keyhooks02.c \
+			src_bonus/line_draw.c \
+			src_bonus/line_draw_utils.c \
+			src_bonus/matrix_operations.c \
 			src_bonus/matrix_projection.c \
 			src_bonus/matrix_transforms.c \
-			src_bonus/matrix_operations.c \
-			src_bonus/transform_operations.c \
+			src_bonus/mlx.c \
 			src_bonus/orthographic_projection.c \
-			src_bonus/line_draw_utils.c \
-			src_bonus/line_draw.c \
-			src_bonus/2d_operations.c \
-			src_bonus/draw_operations.c
+			src_bonus/parse_map.c \
+			src_bonus/perspective_projection.c \
+			src_bonus/read_map.c \
+			src_bonus/transform_operations.c \
+			src_bonus/utils.c
 #------------------------------------------------------------------------------------
 OBJS 		= 	$(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 BOBJS		=	$(patsubst $(BSRC_DIR)%.c,$(BOBJ_DIR)%.o,$(BSRCS))

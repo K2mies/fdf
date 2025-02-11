@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:22:59 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 12:07:06 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:34:53 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	r_keyhook(void *param)
 {
 	t_data	*data;
-	
+
 	data = (t_data *)param;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_Q))
 		rotate(data, 5, 0, 0);
@@ -89,13 +89,13 @@ void	ty_keyhook(void *param)
 // Function to reset the projecrtion and reparse the data
 void	reset_keyhook(void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)param;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_R))
 	{
 		parse_points(data->argv, data);
-		data->trans_z = 150.00f + (get_3D_max(data) / 10.0f);
+		data->trans_z = 150.00f + (get_3d_max(data) / 10.0f);
 		project(data);
 		get_max_and_min(data);
 		data->trans_x = 0;

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:19:50 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 10:59:46 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:33:09 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 void	mlx_start(t_data *data)
 {
 	mlx_set_setting(MLX_MAXIMIZED, true);
-	if (!(data->mlx = mlx_init(WIDTH, HEIGHT, "FDF", true)))
+	data->mlx = mlx_init(WIDTH, HEIGHT, "FDF", true);
+	if (!data->mlx)
 		ft_error();
 	mlx_get_monitor_size(0, &data->width, &data->height);
 	data->img = mlx_new_image(data->mlx, data->width, data->height);

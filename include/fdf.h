@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 14:48:36 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:18:05 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ void		perspective_project(t_data *data, t_matrix perspective);
 void		perspective_project_3d_to_2d(t_vec4 v, t_matrix m,
 				t_vec2 *res);
 //3D operations-----------------------------------------------------
-double		get_3D_max(t_data *data);
+double		get_3d_max(t_data *data);
 void		project(t_data *data);
 // Line draw--------------------------------------------------------
 void		draw_line(t_data *data, t_vec2 p0, t_vec2 p1);
@@ -214,7 +214,7 @@ int			arr_len(char **arr);
 void		free_all(t_data *data);
 // Mlx ------------------------------------------------------------
 void		mlx_start(t_data *data);
-void		my_kethook(mlx_key_data_t keydata, void *param);
+void		my_keyhook(mlx_key_data_t keydata, void *param);
 // Keyhooks 01------------------------------------------------------
 void		r_keyhook(void *param);
 void		tz_keyhook(void *param);

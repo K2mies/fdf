@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:12:50 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 12:17:47 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:26:06 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	scroll_up(double ydelta, t_data *data)
 }
 
 // Function to handle scroll down
- void	scroll_down(double ydelta, t_data *data)
+void	scroll_down(double ydelta, t_data *data)
 {
 	if (ydelta < 0)
 	{

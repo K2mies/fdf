@@ -6,18 +6,17 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:43 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 10:47:29 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:19:35 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // Function to get the max 3D value to use as a offset
-double	get_3D_max(t_data *data)
+double	get_3d_max(t_data *data)
 {
-	int	i;
-	int	j;
-
+	int		i;
+	int		j;
 	double	max_x;
 	double	max_y;
 	double	max_z;
@@ -25,7 +24,6 @@ double	get_3D_max(t_data *data)
 	max_x = data->points[0][0].x;
 	max_y = data->points[0][0].y;
 	max_z = data->points[0][0].z;
-
 	i = -1;
 	while (++i < data->rows)
 	{
@@ -35,14 +33,12 @@ double	get_3D_max(t_data *data)
 			if (max_x < data->points[i][j].x)
 				max_x = data->points[i][j].x;
 			if (max_y < data->points[i][j].y)
-				max_y = data->points[i][j].y;		
+				max_y = data->points[i][j].y;
 			if (max_z < data->points[i][j].z)
-				max_z = data->points[i][j].z;		
+				max_z = data->points[i][j].z;
 		}
 	}
-//	return(max_z);
-//	return (max_x * max_y);
-	return(max_x * max_y * max_z);
+	return (max_x * max_y * max_z);
 }
 
 // Function to project depending on flag orthographic/perspective

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:47:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 12:05:47 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:27:39 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ void	p_keyhook(void *param)
 		if (data->flag == 'o')
 		{
 			perspective_projection(data);
-			ft_printf("Projection set to: perspective\n");	
+			ft_printf("Projection set to: perspective\n");
 		}
 		else if (data->flag == 'p')
 		{
 			ortho_projection(data);
 			ft_printf("Projection set to: orthographic\n");
-			
 		}
 		get_max_and_min(data);
 		redraw(data);
@@ -55,5 +54,4 @@ void	z_keyhook(double xdelta, double ydelta, void *param)
 	data = (t_data *)param;
 	scroll_up(ydelta, data);
 	scroll_down(ydelta, data);
-
 }

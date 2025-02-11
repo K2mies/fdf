@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:14:54 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/07 15:42:41 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:23:09 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	init_proj_points(t_data *data)
 		}
 	}
 }
+
 // Function to copy contents of one array to another
 void	copy_arr_data(t_data *data, t_vec4 **dest, t_vec4 **src)
 {
@@ -72,7 +73,6 @@ void	copy_arr_data(t_data *data, t_vec4 **dest, t_vec4 **src)
 			dest[i][j] = src[i][j];
 		}
 	}
-
 }
 
 // Function to init 2d point array

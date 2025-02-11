@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/10 15:43:25 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:37:17 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	parse_points(char **argv, t_data *data)
 	parse_xy_points(data);
 	parse_z_points(data, split, split2);
 	reset_parse(argv, data, split, split2);
-	//used to reset variables for each parse.
 	parse_rgba_points(data, split, split2);
-	//for parsing the rgba values use ft_atoi_base(char *str, int base)
-	//in order to convert the number to an unsigned int.
 	close(data->fd);
 	return (1);
 }

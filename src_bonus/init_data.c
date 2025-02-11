@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/10 15:36:39 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:25:13 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 // Master Function to init all data
 t_data	*init_all(int argc, char **argv)
 {
-	if(!(validate_map(argc, argv)))
+	t_data	*data;
+
+	if (!(validate_map(argc, argv)))
 	{
 		ft_printf("map is invalid\n");
 		exit(EXIT_FAILURE);
 	}
-	t_data	*data;
 	data = init_data();
 	get_map_len(argv, data);
 	get_row_count(argv, data);
@@ -70,11 +71,11 @@ void	init_line_data(t_data *data)
 void	init_gradient_data(t_data *data)
 {
 	data->gd = malloc(sizeof(t_gradient_data));
-//	if (!data->o)
-//	{
-//		perror("Failed to allocate memory for gradient data");
-//		exit(EXIT_FAILURE);
-//	}
+	if (!data->o)
+	{
+		perror("Failed to allocate memory for gradient data");
+		exit(EXIT_FAILURE);
+	}
 	ft_memset(data->gd, 0, sizeof(t_gradient_data));
 	data->gd->alpha = 255;
 }
