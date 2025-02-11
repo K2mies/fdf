@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:43 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/10 15:30:33 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:47:29 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,13 @@ double	get_3D_max(t_data *data)
 //	return(max_z);
 //	return (max_x * max_y);
 	return(max_x * max_y * max_z);
+}
+
+// Function to project depending on flag orthographic/perspective
+void	project(t_data *data)
+{
+	if (data->flag == 'o')
+		ortho_projection(data);
+	else
+		perspective_projection(data);
 }

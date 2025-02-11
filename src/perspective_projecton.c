@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:53:31 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/10 17:22:50 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:59:00 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	perspective_projection(t_data *d)
 //	trans_z = (get_3D_max(d) / 20.0f);
 //	trans_z = 20.0f;
 	trans_z = d->trans_z;
-	printf("trans_z = %.1f\n", trans_z);
+//	printf("trans_z = %.1f\n", trans_z);
 
 //	printf("1: x = %.1f y = %.1f\n", d->points[0][0].x, d->points[0][0].y);
 	translation = create_translation_matrix(0, 0, trans_z);

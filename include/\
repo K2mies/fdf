@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 11:25:38 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:02:34 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ int			arr_len(char **arr);
 void		free_all(t_data *data);
 // Mlx ------------------------------------------------------------
 void		mlx_start(t_data *data);
-// Keyhooks 01------------------------------------------------------
+// Keyhooks 01-------------------------------------------------------
 void		r_keyhook(void *param);
 void		tz_keyhook(void *param);
 void		tx_keyhook(void *param);
@@ -224,10 +224,6 @@ void		esc_keyhook(void *param);
 void		reset_keyhook(void *param);
 void		p_keyhook(void *param);
 void		z_keyhook(double xdelta, double ydelts, void *param);
-// Keyhook functrions
-void		scroll_up(double ydelta, t_data *data);
-void		scroll_down(double ydelta, t_data *data);
-void		rotate(t_data *data, double x, double y, double z);
 // Error-----------------------------------------------------------
 void		ft_error(void);
 bool		validate_map(int argc, char **argv);
