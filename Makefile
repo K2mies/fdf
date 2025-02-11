@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/11 15:14:55 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/11 16:08:05 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -134,6 +134,7 @@ bonus: $(BNAME)
 
 $(BNAME): mlxdir libmlx libft $(BOBJS)
 		@$(CC) $(CFLAGS) $(BOBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(BNAME)
+		@echo "$(GREEN)Succesfully built fdf_bonus!$(DEF_COLOR)"
 
 $(BOBJ_DIR)%.o:$(BSRC_DIR)%.c
 		@mkdir -p $(@D)
