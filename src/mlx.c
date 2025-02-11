@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:19:50 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 17:00:00 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:16:49 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	data = (t_data *)param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 	{
-		ft_printf("test = %d\n", data->width);
 		puts("Escape!");
 		free(data->o);
 		free_point_arr(data);
