@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:14:54 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 13:21:28 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:22:47 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_3d_points(t_data *data)
 				free(data->points[i]);
 			free(data->points);
 			ft_printf("data points free'd");
+			free_all(data, 'f');
 			exit(1);
 		}
 	}
@@ -53,6 +54,7 @@ void	init_2d_points(t_data *data)
 				free(data->p2d[i]);
 			free(data->p2d);
 			ft_printf("data points free'd");
+			free_all(data, 'f');
 			exit(1);
 		}
 	}
