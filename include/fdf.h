@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 13:34:37 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:41:02 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ int			word_count(const char *str);
 int			print_arr(t_data *data, char flag);
 // Parse map-----------------------------------------------------------
 int			parse_points(char **argv, t_data *data);
-int			reset_parse(char **argv, t_data *data, char **split, char **split2);
+int			reset_parse(char **argv, t_data *data);
 int			parse_xy_points(t_data *data);
 int			parse_z_points(t_data *data, char **split, char **split2);
 int			parse_rgba_points(t_data *data, char **split, char **split2);

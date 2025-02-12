@@ -6,16 +6,14 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 16:06:24 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:41:32 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	reset_parse(char **argv, t_data *data, char **split, char **split2)
+int	reset_parse(char **argv, t_data *data)
 {
-	split = NULL;
-	split2 = NULL;
 	data->fd = open(argv[1], O_RDONLY);
 	data->line = get_next_line(data->fd);
 	if (data->fd < 0 || !data->line)
