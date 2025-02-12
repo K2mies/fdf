@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:30 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 14:45:22 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:00:37 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -40,7 +40,7 @@ int	get_map_len(char **argv, t_data *data)
 	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
 	if (fd < 0 || !line)
-		return (0);
+		free_all(data, 'f');
 	wc = 0;
 	while (line)
 	{
@@ -64,7 +64,7 @@ int	get_row_count(char **argv, t_data *data)
 	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
 	if (fd < 0 || !line)
-		return (0);
+		free_all(data, 'f');
 	rc = 0;
 	while (line)
 	{
@@ -86,9 +86,11 @@ int	get_col_count(char **argv, t_data *data)
 	data->fd = open(argv[1], O_RDONLY);
 	data->line = get_next_line(data->fd);
 	if (data->fd < 0 || !data->line)
-		return (0);
+		free_all(data, 'f');
 	cc = 0;
 	data->split = ft_split(data->line, ' ');
+	if (!data->split)
+		free_all(data, 'f');
 	cc = arr_len(data->split);
 	while (data->line)
 	{

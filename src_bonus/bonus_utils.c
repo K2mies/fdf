@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:18:08 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 16:27:40 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:56:19 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	arr_len(char **arr)
 }
 
 // Function to free all data
-void	free_all(t_data *data)
+void	free_all(t_data *data, char flag)
 {
 	if (data->o)
 		free(data->o);
@@ -81,4 +81,8 @@ void	free_all(t_data *data)
 	if (data->p2d)
 		free_point_arr(data, 'c');
 	free(data);
+	if (flag == 'f')
+		exit(EXIT_FAILURE);
+	if (flag == 's')
+		exit(EXIT_SUCCESS);
 }
