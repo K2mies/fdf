@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:30:00 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 13:41:32 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:17:54 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	parse_points(char **argv, t_data *data)
 		return (0);
 	parse_xy_points(data);
 	parse_z_points(data, split, split2);
-	reset_parse(argv, data, split, split2);
+	reset_parse(argv, data);
 	parse_rgba_points(data, split, split2);
 	close(data->fd);
 	return (1);

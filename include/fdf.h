@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 13:41:02 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:16:16 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ void		center_view(t_data *data);
 void		get_max_and_min(t_data *data);
 // Utils------------------------------------------------------------
 double		deg_to_rad(double degrees);
-void		free_point_arr(t_data *data);
+void		free_point_arr(t_data *data, char flag);
 void		free_arr(char **arr);
 int			arr_len(char **arr);
 void		free_all(t_data *data);
