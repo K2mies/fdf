@@ -6,7 +6,7 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:55:14 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 16:44:55 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:35:54 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	put_line_data(t_data *data, t_vec2 p0, t_vec2 p1)
 	data->ld->y0 = (int)p0.y;
 	data->ld->x1 = (int)p1.x;
 	data->ld->y1 = (int)p1.y;
-	data->ld->len = calculate_pixel_length(data->ld->x0, data->ld->y0,
+	data->ld->len = calculate_line_length(data->ld->x0, data->ld->y0,
 			data->ld->x1, data->ld->y1);
 	data->ld->pix = 0;
 	data->ld->dx = abs(data->ld->x1 - data->ld->x0);

@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/11 15:18:05 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:34:37 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ void		ft_error(void);
 bool		validate_map(int argc, char **argv);
 // Line draw utils-------------------------------------------------
 int			clamp(int value, int min, int max);
-int			calculate_pixel_length(int x1, int y1, int x2, int y2);
+int			calculate_line_length(int x1, int y1, int x2, int y2);
 int			is_valid(t_data *data);
 int			extract_channel(int color, int shift);
 #endif

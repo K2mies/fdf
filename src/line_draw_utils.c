@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:31:10 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 12:10:28 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:35:03 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	clamp(int value, int min, int max)
 }
 
 // Function to caculate the line length for drawing
-int	calculate_pixel_length(int x1, int y1, int x2, int y2)
+int	calculate_line_length(int x1, int y1, int x2, int y2)
 {
 	int	dx;
 	int	dy;
