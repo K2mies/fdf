@@ -6,16 +6,17 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:57:59 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 16:51:32 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:39:22 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // Error function for mlx
-void	ft_error(void)
+void	ft_error(t_data *data)
 {
-	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
+	free_all(data);
+	ft_printf("mlx failure\n");
 	exit(EXIT_FAILURE);
 }
 

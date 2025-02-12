@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 14:43:25 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:39:25 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_data	*init_data(void)
 	data = malloc(sizeof(t_data));
 	if (!data)
 	{
-		perror("Failed to allocate memory for data");
+		perror("Failed to allocate memory for data\n");
 		exit(EXIT_FAILURE);
 	}
 	ft_memset(data, 0, sizeof(t_data));
@@ -60,7 +60,8 @@ void	init_line_data(t_data *data)
 	data->ld = malloc(sizeof(t_line_data));
 	if (!data->ld)
 	{
-		perror("Failed to allocate memory for line data");
+		free_all(data);
+		perror("Failed to allocate memory for line data\n");
 		exit(EXIT_FAILURE);
 	}
 	ft_memset(data->ld, 0, sizeof(t_line_data));
@@ -71,9 +72,10 @@ void	init_line_data(t_data *data)
 void	init_gradient_data(t_data *data)
 {
 	data->gd = malloc(sizeof(t_gradient_data));
-	if (!data->o)
+	if (!data->gd)
 	{
-		perror("Failed to allocate memory for gradient data");
+		free_all(data);
+		perror("Failed to allocate memory for gradient data\n");
 		exit(EXIT_FAILURE);
 	}
 	ft_memset(data->gd, 0, sizeof(t_gradient_data));

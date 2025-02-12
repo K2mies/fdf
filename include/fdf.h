@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 14:16:16 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:34:23 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void		scroll_up(double ydelta, t_data *data);
 void		scroll_down(double ydelta, t_data *data);
 void		rotate(t_data *data, double x, double y, double z);
 // Error-----------------------------------------------------------
-void		ft_error(void);
+void		ft_error(t_data *data);
 bool		validate_map(int argc, char **argv);
 // Line draw utils-------------------------------------------------
 int			clamp(int value, int min, int max);
