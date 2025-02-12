@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:57:59 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 16:42:07 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:06:14 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 // Error function for mlx
 void	ft_error(t_data *data)
 {
-	free_all(data);
 	ft_printf("mlx failure\n");
-	exit(EXIT_FAILURE);
+	free_all(data, 'f');
 }
 
 // Function to validate map

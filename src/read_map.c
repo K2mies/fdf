@@ -6,13 +6,13 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:30 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 17:00:36 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:14:26 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
 // Function to get the total count of the map len.
-int	word_count(const char *str)
+int	word_count(const char *str, t_data *data)
 {
 	int		wc;
 	int		i;
@@ -27,6 +27,11 @@ int	word_count(const char *str)
 			wc++;
 		while (str[i] && (str[i] != ' ' && !(str[i] >= 9 && str[i] <= 13)))
 			i++;
+	}
+	if (wc == 0)
+	{
+		ft_printf("invalid map\n");
+		free_all(data, 'f');
 	}
 	return (wc);
 }
@@ -45,7 +50,7 @@ int	get_map_len(char **argv, t_data *data)
 	wc = 0;
 	while (line)
 	{
-		wc += word_count(line);
+		wc += word_count(line, data);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -87,7 +92,7 @@ int	get_col_count(char **argv, t_data *data)
 	data->fd = open(argv[1], O_RDONLY);
 	data->line = get_next_line(data->fd);
 	if (data->fd < 0 || !data->line)
-		free_all(data, 'f';);
+		free_all(data, 'f');
 	cc = 0;
 	data->split = ft_split(data->line, ' ');
 	if (!data->split)

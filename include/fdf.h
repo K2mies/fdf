@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 16:56:56 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:13:53 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ typedef struct s_data
 int			get_row_count(char **argv, t_data *data);
 int			get_col_count(char **argv, t_data *data);
 int			get_map_len(char **argv, t_data *data);
-int			word_count(const char *str);
+int			word_count(const char *str, t_data *data);
 int			print_arr(t_data *data, char flag);
 // Parse map-----------------------------------------------------------
 int			parse_points(char **argv, t_data *data);

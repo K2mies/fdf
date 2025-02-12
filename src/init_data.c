@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:42:07 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 16:42:25 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:14:28 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ void	init_ortho_data(t_data *data)
 	data->o = malloc(sizeof(t_ortho_data));
 	if (!data->o)
 	{
-		free_all(data);
 		perror("Failed to allocate memory for ortho_data\n");
-		exit(EXIT_FAILURE);
+		free_all(data, 'f');
 	}
 	ft_memset(data->o, 0, sizeof(t_ortho_data));
 }
@@ -69,9 +68,8 @@ void	init_line_data(t_data *data)
 	data->ld = malloc(sizeof(t_line_data));
 	if (!data->ld)
 	{
-		free_all(data);
 		perror("Failed to allocate memory for line data\n");
-		exit(EXIT_FAILURE);
+		free_all(data, 'f');
 	}
 	ft_memset(data->ld, 0, sizeof(t_line_data));
 	data->ld->color = WHITE;
@@ -83,9 +81,8 @@ void	init_gradient_data(t_data *data)
 	data->gd = malloc(sizeof(t_gradient_data));
 	if (!data->gd)
 	{
-		free_all(data);
 		perror("Failed to allocate memory for gradient data\n");
-		exit(EXIT_FAILURE);
+		free_all(data, 'f');
 	}
 	ft_memset(data->gd, 0, sizeof(t_gradient_data));
 	data->gd->alpha = 255;

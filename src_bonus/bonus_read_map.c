@@ -6,12 +6,12 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:30 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 17:00:37 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:14:25 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-int	word_count(const char *str)
+int	word_count(const char *str, t_data *data)
 {
 	int		wc;
 	int		i;
@@ -26,6 +26,11 @@ int	word_count(const char *str)
 			wc++;
 		while (str[i] && (str[i] != ' ' && !(str[i] >= 9 && str[i] <= 13)))
 			i++;
+	}
+	if (wc == 0)
+	{
+		ft_printf("invalid map\n");
+		free_all(data, 'f');
 	}
 	return (wc);
 }
@@ -44,7 +49,7 @@ int	get_map_len(char **argv, t_data *data)
 	wc = 0;
 	while (line)
 	{
-		wc += word_count(line);
+		wc += word_count(line, data);
 		free(line);
 		line = get_next_line(fd);
 	}
