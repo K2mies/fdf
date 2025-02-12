@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:56 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/04 16:51:55 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:31:51 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	scale_view(t_data *data)
 
 	scale_x = 0;
 	scale_y = 0;
-	scale_x = 0.6 * data->width / (data->x_max - data->x_min);
-	scale_y = 0.6 * data->height / (data->y_max - data->y_min);
+	scale_x = 0.4 * data->width / (data->x_max - data->x_min);
+	scale_y = 0.4 * data->height / (data->y_max - data->y_min);
 	i = -1;
 	while (++i < data->rows)
 	{
@@ -46,17 +46,15 @@ void	offset_view(t_data *data)
 
 	c_x = data->width / 2.0;
 	c_y = data->height / 2.0;
-	i = 0;
-	while (i < data->rows)
+	i = -1;
+	while (++i < data->rows)
 	{
-		j = 0;
-		while (j < data->cols)
+		j = -1;
+		while (++j < data->cols)
 		{
 			data->p2d[i][j].x += c_x;
 			data->p2d[i][j].y += c_y;
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -70,17 +68,15 @@ void	center_view(t_data *data)
 
 	c_x = data->width / 2.0;
 	c_y = data->height / 2.0;
-	i = 0;
-	while (i < data->rows)
+	i = -1;
+	while (++i < data->rows)
 	{
-		j = 0;
-		while (j < data->cols)
+		j = -1;
+		while (++j < data->cols)
 		{
 			data->p2d[i][j].x -= c_x;
 			data->p2d[i][j].y -= c_y;
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -90,6 +86,7 @@ void	get_max_and_min(t_data *data)
 	int		i;
 	int		j;
 
+	data->x_max = 0;
 	i = -1;
 	while (++i < data->rows)
 	{
@@ -97,13 +94,12 @@ void	get_max_and_min(t_data *data)
 		while (++j < data->cols)
 		{
 			if (data->p2d[i][j].x > data->x_max)
+			{
 				data->x_max = data->p2d[i][j].x;
-			if (data->p2d[i][j].y > data->y_max)
-				data->y_max = data->p2d[i][j].y;
-			if (data->p2d[i][j].x < data->x_min)
-				data->x_min = data->p2d[i][j].x;
-			if (data->p2d[i][j].y < data->y_min)
-				data->y_min = data->p2d[i][j].y;
+				data->y_max = data->x_max;
+			}
 		}
 	}
+	data->x_min = data->x_max * -1;
+	data->y_min = data->y_max * -1;
 }
