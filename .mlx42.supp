@@ -1,0 +1,121 @@
+{
+   <suppression_name>
+   Memcheck:Leak
+   ...
+   fun:*mlx*
+}
+
+#{
+#   <insert_a_suppression_name_here>
+#   Memcheck:Addr8
+#   fun:strncmp
+#   fun:is_dst
+#   fun:_dl_dst_count
+#   fun:expand_dynamic_string_token
+#   fun:fillin_rpath.isra.0
+#   fun:decompose_rpath
+#   fun:cache_rpath
+#   fun:cache_rpath
+#   fun:_dl_map_object
+#   fun:openaux
+#   fun:_dl_catch_exception
+#   fun:_dl_map_object_deps
+#   fun:dl_open_worker_begin
+#   fun:_dl_catch_exception
+#   fun:dl_open_worker
+#}
+#
+#{
+#   <insert_a_suppression_name_here>
+#   Memcheck:Addr8
+#   fun:strncmp
+#   fun:is_dst
+#   fun:_dl_dst_substitute
+#   fun:fillin_rpath.isra.0
+#   fun:decompose_rpath
+#   fun:cache_rpath
+#   fun:cache_rpath
+#   fun:_dl_map_object
+#   fun:openaux
+#   fun:_dl_catch_exception
+#   fun:_dl_map_object_deps
+#   fun:dl_open_worker_begin
+#   fun:_dl_catch_exception
+#   fun:dl_open_worker
+#}
+#
+#{
+#   <insert_a_suppression_name_here>
+#   Memcheck:Leak
+#   match-leak-kinds: definite
+#   fun:malloc
+#   fun:malloc
+#   fun:_dl_find_object_update
+#   fun:dl_open_worker_begin
+#   fun:_dl_catch_exception
+#   fun:dl_open_worker
+#   fun:_dl_catch_exception
+#   fun:_dl_open
+#   fun:dlopen_doit
+#   fun:_dl_catch_exception
+#   fun:_dl_catch_error
+#   fun:_dlerror_run
+#   fun:dlopen_implementation
+#   fun:dlopen@@GLIBC_2.34
+#}
+
+{
+    leak _dl_open
+    Memcheck:Leak
+    ...
+    fun:_dl_open
+}
+
+{
+    invalid read of size dl_open_worker
+    Memcheck:Addr8
+    ...
+    fun:dl_open_worker
+}
+{
+    leak _dl_catch_exception
+    Memcheck:Leak
+    ...
+    fun:_dl_catch_exception
+}
+{
+    leak glfwInit
+    Memcheck:Leak
+    ...
+    fun:glfwInit
+}
+{
+    leak XrmGetStringDatabase
+    Memcheck:Leak
+    ...
+    fun:XrmGetStringDatabase
+}
+{
+    leak __pthread_once_slow
+    Memcheck:Leak
+    ...
+    fun:__pthread_once_slow
+}
+{
+    leak _XrmInitParseInfo
+    Memcheck:Leak
+    ...
+    fun:_XrmInitParseInfo
+}
+{
+    leak _Znwm
+    Memcheck:Leak
+    ...
+    fun:_Znwm
+}
+{
+    leak __tls_get_addr
+    Memcheck:Leak
+    ...
+    fun:__tls_get_addr
+}
