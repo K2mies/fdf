@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/13 11:18:59 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:58:41 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,6 @@ int			get_row_count(char **argv, t_data *data);
 int			get_col_count(char **argv, t_data *data);
 int			get_map_len(char **argv, t_data *data);
 int			word_count(const char *str, t_data *data);
-int			print_arr(t_data *data, char flag);
 // Parse map-----------------------------------------------------------
 int			parse_points(char **argv, t_data *data);
 int			reset_parse(char **argv, t_data *data);
@@ -166,7 +165,6 @@ void		memset_points(t_data *data);
 t_matrix	create_empty_matrix(void);
 t_matrix	create_identity_matrix(void);
 t_vec4		matrix_multiply_vector(t_matrix m, t_vec4 v);
-t_vec4		normalize_homogeneous_vector(t_vec4 v);
 // Matrix transformations----------------------------------------------
 t_matrix	create_scaling_matrix(double sx, double sy, double sz);
 t_matrix	create_rotation_x_matrix(double angle);

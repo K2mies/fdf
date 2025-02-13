@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:13:45 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 14:44:15 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:59:24 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,4 @@ t_vec4	matrix_multiply_vector(t_matrix m, t_vec4 v)
 	}
 	res.rgba = v.rgba;
 	return (res);
-}
-
-// Function to normalize a homogeneous coordinate vector
-t_vec4	normalize_homogeneous_vector(t_vec4 v)
-{
-	if (v.w != 0 && v.w != 1)
-	{
-		v.x /= v.w;
-		v.y /= v.w;
-		v.z /= v.w;
-		v.w = 1;
-	}
-	return (v);
 }
