@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/12 14:40:59 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/13 11:43:06 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,12 @@ NAME	= 	fdf
 BNAME	=	fdf_bonus
 
 CC		= 	cc
-CFLAGS	= 	-Wextra -Wall -Werror -Wunreachable-code -Ofast
-LIBMLX 	= 	./lib/MLX42
+CFLAGS	= 	-Wextra -Wall -Werror -Wunreachable-code -O3 -g
+LIBMLXDIR 	= 	./lib/MLX42
 LIBFT	= 	./lib/libft/libft.a
 
-HEADERS = 	-I ./include -I $(LIBMLX)/include
-LIBS	= 	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+HEADERS = 	-I ./include -I $(LIBMLXDIR)/include
+LIBS	= 	$(LIBMLXDIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 #-----------------------------------------------------------------------------------
 SRCS	=	src/fdf.c \
 			src/mlx.c \
@@ -82,31 +82,23 @@ OBJ_DIR 	= 	obj/
 BSRC_DIR	=	src_bonus/
 BOBJ_DIR	=	bonus_obj/
 #------------------------------------------------------------------------------------
-start:
-		make all
-
-all: mlxdir libmlx libft $(NAME)
-
-mlxdir: $(LIBMLX)
+all: $(LIBMLXDIR) libmlx $(LIBFT) $(NAME)
 
 libmlx:
-		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+		@cmake $(LIBMLXDIR) -B $(LIBMLXDIR)/build && make -C $(LIBMLXDIR)/build -j4
 
-libft: $(LIBFT)
-
-$(LIBMLX):
-		@git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX)
+$(LIBMLXDIR):
+		@git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLXDIR)
 		@echo "$(CYAN)cloned MLX library$(DEF_COLOR)"
 
 $(LIBFT):
 		make -C ./lib/libft
 
-$(NAME): $(OBJ_DIR) $(OBJS) libft
+$(NAME): $(OBJ_DIR) $(OBJS) $(LIBFT)
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)
 		@echo "$(GREEN)Succesfully built fdf!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-		@mkdir -p $(@D)
 		@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
 $(OBJ_DIR):
@@ -122,7 +114,7 @@ fclean: clean
 		@rm -rf $(NAME)
 		@rm -rf $(BNAME)
 		@rm -rf $(LIBFT)
-		@rm -rf $(LIBMLX)
+		@rm -rf $(LIBMLXDIR)
 		@echo "$(CYAN)fdf executable files cleaned!$(DEF_COLOR)"
 		@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
 		@echo "$(CYAN)mlx executable files cleaned!$(DEF_COLOR)"
@@ -132,7 +124,7 @@ re: fclean all
 #-------------------------------------------------------------------------------
 bonus: $(BNAME)
 
-$(BNAME): mlxdir libmlx libft $(BOBJS)
+$(BNAME): $(LIBMLXDIR) libmlx $(LIBFT) $(BOBJS)
 		@$(CC) $(CFLAGS) $(BOBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(BNAME)
 		@echo "$(GREEN)Succesfully built fdf_bonus!$(DEF_COLOR)"
 
@@ -143,4 +135,4 @@ $(BOBJ_DIR)%.o:$(BSRC_DIR)%.c
 $(BOBJ_DIR):
 		mkdir -p $(BOBJ_DIR)
 #-------------------------------------------------------------------------------
-.PHONY: all clean fclean re mlxdir libmlx libft bonus
+.PHONY: all clean fclean re libmlx bonus
