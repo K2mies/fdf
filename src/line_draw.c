@@ -6,14 +6,14 @@
 /*   By: rhvidste <rvidste@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:55:14 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 13:35:54 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:34:23 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // Gradient refactoring using gdata
-static int	gradient(t_data *d, int start_color, int end_color)
+int	gradient(t_data *d, int start_color, int end_color)
 {
 	d->gd->start_r = extract_channel(start_color, 24);
 	d->gd->start_g = extract_channel(start_color, 16);
@@ -69,12 +69,7 @@ void	draw_line(t_data *data, t_vec2 p0, t_vec2 p1)
 	put_line_data(data, p0, p1);
 	while (1)
 	{
-		if (is_valid(data))
-		{
-			data->ld->color = gradient(data, p0.rgba, p1.rgba);
-			mlx_put_pixel(data->img, data->ld->x0,
-				data->ld->y0, data->ld->color);
-		}
+		draw_pixel(data, p0, p1);
 		if (data->ld->x0 == data->ld->x1 && data->ld->y0 == data->ld->y1)
 			break ;
 		data->ld->e2 = 2 * data->ld->err;

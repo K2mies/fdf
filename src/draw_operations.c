@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:11:33 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 13:35:15 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:31:44 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,19 @@ void	draw(t_data *data)
 			j++;
 		}
 		i++;
+	}
+}
+
+// Function to check conditions and then draw pixel on screen.
+void	draw_pixel(t_data *data, t_vec2 p0, t_vec2 p1)
+{
+	if (is_valid_line(data))
+	{
+		if (is_valid_pixel(data))
+		{
+			data->ld->color = gradient(data, p0.rgba, p1.rgba);
+			mlx_put_pixel(data->img, data->ld->x0,
+				data->ld->y0, data->ld->color);
+		}
 	}
 }
