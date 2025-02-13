@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:29:55 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/12 17:13:53 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:18:59 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,9 +197,11 @@ double		get_3d_max(t_data *data);
 void		project(t_data *data);
 // Line draw--------------------------------------------------------
 void		draw_line(t_data *data, t_vec2 p0, t_vec2 p1);
+int			gradient(t_data *d, int start_color, int end_color);
 // Draw operations--------------------------------------------------
 void		color_fill(t_data *data);
 void		draw(t_data *data);
+void		draw_pixel(t_data *data, t_vec2 p0, t_vec2 p1);
 // 2d operations----------------------------------------------------
 void		redraw(t_data *data);
 void		scale_view(t_data *data);
@@ -235,6 +237,7 @@ bool		validate_map(int argc, char **argv);
 // Line draw utils-------------------------------------------------
 int			clamp(int value, int min, int max);
 int			calculate_line_length(int x1, int y1, int x2, int y2);
-int			is_valid(t_data *data);
+int			is_valid_line(t_data *data);
+int			is_valid_pixel(t_data *data);
 int			extract_channel(int color, int shift);
 #endif
