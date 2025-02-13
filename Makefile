@@ -6,7 +6,7 @@
 #    By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/20 14:30:18 by rhvidste          #+#    #+#              #
-#    Updated: 2025/02/13 11:43:06 by rhvidste         ###   ########.fr        #
+#    Updated: 2025/02/13 13:14:31 by rhvidste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ NAME	= 	fdf
 BNAME	=	fdf_bonus
 
 CC		= 	cc
-CFLAGS	= 	-Wextra -Wall -Werror -Wunreachable-code -O3 -g
+CFLAGS	= 	-Wextra -Wall -Werror -Wunreachable-code -O3
 LIBMLXDIR 	= 	./lib/MLX42
 LIBFT	= 	./lib/libft/libft.a
 
