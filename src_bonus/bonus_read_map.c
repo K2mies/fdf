@@ -6,7 +6,7 @@
 /*   By: rhvidste <rhvidste@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:30 by rhvidste          #+#    #+#             */
-/*   Updated: 2025/02/13 11:12:53 by rhvidste         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:56:44 by rhvidste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -107,32 +107,4 @@ int	get_col_count(char **argv, t_data *data)
 	close(data->fd);
 	data->cols = cc;
 	return (cc);
-}
-
-// Function to print array for debugging
-int	print_arr(t_data *data, char flag)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < data->rows)
-	{
-		j = -1;
-		while (++j < data->cols)
-		{
-			if (flag == 'x')
-				printf("%.1f ", data->points[i][j].x);
-			if (flag == 'y')
-				printf("%.1f ", data->points[i][j].y);
-			if (flag == 'z')
-				printf("%.1f ", data->points[i][j].z);
-			if (flag == 'w')
-				printf("%.1f ", data->points[i][j].w);
-			if (flag == 'c')
-				printf("%X ", data->points[i][j].rgba);
-		}
-		printf("\n");
-	}
-	return (1);
 }
